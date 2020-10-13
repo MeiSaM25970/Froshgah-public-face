@@ -1,0 +1,17 @@
+@media only screen and (max-width: 991.99px) {
+  .header-area .navbar-nav {
+    transition: 0.3s !important;
+  }
+
+  .header-area .navbar-nav.is-close {
+    height: 0 !important;
+    overflow-y: hidden !important;
+    visibility: hidden;
+  }
+
+  .header-area .navbar-nav.is-open {
+    height: 300 !important;
+    overflow-y: auto !important;
+    visibility: visible;
+  }
+}
