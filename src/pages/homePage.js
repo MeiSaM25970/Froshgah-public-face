@@ -30,13 +30,10 @@ export class HomePage extends Component {
     ) : this.state.data ? (
       <Fragment>
         <LoadPage />
-        <NavBar />
         <Introduction />
         <Products data={this.state.data} />
         <Pricing data={this.state.data} />
         <Blog />
-        <FooterTop />
-        <FooterBottom />
         <ScrollTop />
       </Fragment>
     ) : (

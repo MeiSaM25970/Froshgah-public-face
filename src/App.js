@@ -6,11 +6,28 @@ import Page from "./component/pageTitle/pageTitle";
 import { HomePage } from "./pages/";
 import { ErrorPage2 } from "./pages/ErrorPage2";
 import LoadingPage from "./pages/Loading";
+import { ProductsPage } from "./pages/products";
+import { LoadPage } from "./component/loadPage";
+import { FooterBottom, FooterTop } from "./component/footer";
+import { NavBar } from "./component/Navbar/navbar";
+import { AboutPage } from "./pages/about";
 
 function App() {
+  const navFoot = () => {
+    if (window.location.pathname === "/error") {
+      return false;
+    } else if (window.location.pathname === "/loading") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+  const showNavFoot = navFoot();
   return (
     <div className="App">
       <BrowserRouter>
+        <LoadPage />
+        {showNavFoot ? <NavBar /> : ""}
         <Switch>
           <Route
             path="/"
@@ -18,6 +35,24 @@ function App() {
             render={(props) => (
               <Page title="صفحه اصلی">
                 <HomePage {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/product-1"
+            exact
+            render={(props) => (
+              <Page title="صفحه محصولات">
+                <ProductsPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/about"
+            exact
+            render={(props) => (
+              <Page title="درباره ما">
+                <AboutPage {...props} />
               </Page>
             )}
           />
@@ -40,6 +75,8 @@ function App() {
             )}
           />
         </Switch>
+        {showNavFoot ? <FooterTop /> : ""}
+        {showNavFoot ? <FooterBottom /> : ""}
       </BrowserRouter>
     </div>
   );
