@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Product } from "./product";
 export class Products extends Component {
   state = {};
   render() {
@@ -14,41 +15,7 @@ export class Products extends Component {
           </div>
 
           <div className="row ">
-            <div className="col-lg-5 col-sm-6 mr-auto mt-100">
-              <div className="single-services">
-                <i className="flaticon-estimate"></i>
-                <h3 className="ir-b">محصول 1</h3>
-                <p className="ir-r">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                  تکنولوژی مورد نیاز...
-                </p>
-
-                <a href="single-services.html" className="read-more ir-r">
-                  اطلاعات بیشتر
-                  <span className="flaticon-next"></span>
-                </a>
-              </div>
-            </div>
-
-            <div className="col-lg-5 col-sm-6 ml-auto mt-100">
-              <div className="single-services">
-                <i className="flaticon-home"></i>
-                <h3 className="ir-b">محصول 2</h3>
-                <p className="ir-r">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                  تکنولوژی مورد نیاز...
-                </p>
-
-                <a href="single-services.html" className="read-more ir-r">
-                  اطلاعات بیشتر
-                  <span className="flaticon-next"></span>
-                </a>
-              </div>
-            </div>
+            <Product data={this.props.data} />
           </div>
         </div>
 
