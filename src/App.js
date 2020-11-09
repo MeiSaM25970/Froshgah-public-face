@@ -11,12 +11,14 @@ import { LoadPage } from "./component/loadPage";
 import { FooterBottom, FooterTop } from "./component/footer";
 import { NavBar } from "./component/Navbar/navbar";
 import { AboutPage } from "./pages/about";
+import { ContactPage } from "./pages/contact";
+import { SingleBlock } from "./pages/singleBlock";
 
 function App() {
   const navFoot = () => {
-    if (window.location.pathname === "/error") {
+    if (window.location.pathname == "/error") {
       return false;
-    } else if (window.location.pathname === "/loading") {
+    } else if (window.location.pathname == "/loading") {
       return false;
     } else {
       return true;
@@ -39,11 +41,20 @@ function App() {
             )}
           />
           <Route
-            path="/product-1"
+            path="/products/:id"
             exact
             render={(props) => (
               <Page title="صفحه محصولات">
                 <ProductsPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/contact"
+            exact
+            render={(props) => (
+              <Page title="تماس  با ما">
+                <ContactPage {...props} />
               </Page>
             )}
           />

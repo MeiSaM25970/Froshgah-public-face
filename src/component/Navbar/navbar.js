@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 
 export class NavBar extends Component {
   state = {
@@ -53,10 +54,10 @@ export class NavBar extends Component {
                     }
                   >
                     <li className="nav-item">
-                      <a href="#" className="nav-link ir-r active">
+                      <Link to="/" className="nav-link ir-r active">
                         {" "}
                         خانه{" "}
-                      </a>
+                      </Link>
                     </li>
 
                     <li className="nav-item">
@@ -164,17 +165,17 @@ export class NavBar extends Component {
                     </li>
 
                     <li className="nav-item">
-                      <a href="#" className="nav-link ir-r">
+                      <Link to="/about" className="nav-link ir-r">
                         {" "}
                         درباره ما{" "}
-                      </a>
+                      </Link>
                     </li>
 
                     <li className="nav-item mean-last">
-                      <a href="#" className="nav-link ir-r">
+                      <Link to="/contact" className="nav-link ir-r">
                         {" "}
                         تماس با ما{" "}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </nav>
@@ -193,13 +194,13 @@ export class NavBar extends Component {
             <div className="main-nav">
               <div className="container-fluid">
                 <nav className="navbar navbar-expand-md">
-                  <a className="navbar-brand" href="index.html">
+                  <Link className="navbar-brand" to="/">
                     <img
                       className="logo-img"
                       src="/assets/img/logo.png"
                       alt="Logo"
                     />
-                  </a>
+                  </Link>
 
                   <div className="mean-push"></div>
                   <div
@@ -212,10 +213,10 @@ export class NavBar extends Component {
                   >
                     <ul className="navbar-nav m-auto">
                       <li className="nav-item">
-                        <a href="#" className="nav-link ir-r active">
+                        <Link to="/" className="nav-link ir-r active">
                           {" "}
                           خانه{" "}
-                        </a>
+                        </Link>
                       </li>
 
                       <li className="nav-item">
@@ -269,17 +270,17 @@ export class NavBar extends Component {
                       </li>
 
                       <li className="nav-item">
-                        <a href="#" className="nav-link ir-r">
+                        <Link to="/about" className="nav-link ir-r">
                           {" "}
                           درباره ما{" "}
-                        </a>
+                        </Link>
                       </li>
 
                       <li className="nav-item">
-                        <a href="#" className="nav-link ir-r">
+                        <Link to="/contact" className="nav-link ir-r">
                           {" "}
                           تماس با ما{" "}
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>

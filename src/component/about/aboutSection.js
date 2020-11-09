@@ -3,13 +3,13 @@ export class AboutComponent extends Component {
   state = {};
   render() {
     return (
-      <section class="about-content ptb-100">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <span class="d-block ir-b text-right">رضا فرجی کیست؟</span>
+      <section className="about-content ptb-100">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <span className="d-block ir-b text-right">رضا فرجی کیست؟</span>
               <br />
-              <p class="d-block ir-r text-justify">
+              <p className="d-block ir-r text-justify">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -23,7 +23,7 @@ export class AboutComponent extends Component {
                 پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
               </p>
               <br />
-              <p class="d-block ir-r text-justify">
+              <p className="d-block ir-r text-justify">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -36,7 +36,7 @@ export class AboutComponent extends Component {
                 زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
                 پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
               </p>
-              <p class="d-block ir-r text-justify">
+              <p className="d-block ir-r text-justify">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -56,7 +56,7 @@ export class AboutComponent extends Component {
                   src="https://www.aparat.com/embed/IZ3QS?data[rnddiv]=21209617439&data[responsive]=yes"
                 ></script>
               </div>
-              <p class="d-block ir-r text-justify">
+              <p className="d-block ir-r text-justify">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -70,7 +70,7 @@ export class AboutComponent extends Component {
                 پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
               </p>
               <br />
-              <p class="d-block ir-r text-justify">
+              <p className="d-block ir-r text-justify">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -83,7 +83,7 @@ export class AboutComponent extends Component {
                 زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
                 پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
               </p>
-              <p class="d-block ir-r text-justify">
+              <p className="d-block ir-r text-justify">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد

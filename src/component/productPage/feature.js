@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import Loading from "../loading";
 export class FeaturesArea extends Component {
   state = {};
   render() {
-    return (
+    return this.props.data ? (
       <section
         id="features"
         className="services-area product-features services-area-style-two pt-100 pb-70"
@@ -13,84 +14,25 @@ export class FeaturesArea extends Component {
           </div>
 
           <div className="row">
-            <div className="col-lg-4 col-sm-6">
-              <div className="single-services">
-                <h3 className="ir-b text-center">یادگیری آسان</h3>
-                <p className="ir-r text-center">
-                  به راحتی زبان انگلیسی را یاد بگیرید و بهترین بازده را داشته
-                  باشید.
-                </p>
+            {this.props.data.feature.map((feature, index) => (
+              <div className="col-lg-4 col-sm-6" key={index}>
+                <div className="single-services">
+                  <h3 className="ir-b text-center">{feature.title}</h3>
+                  <p className="ir-r text-center">{feature.description}</p>
 
-                <span className="count ir-b">1</span>
+                  <span className="count ir-b">{index + 1}</span>
+                </div>
               </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="single-services">
-                <h3 className="ir-b text-center">بدون خستگی</h3>
-                <p className="ir-r text-center">
-                  به راحتی زبان انگلیسی را یاد بگیرید و بهترین بازده را داشته
-                  باشید.
-                </p>
-
-                <span className="count ir-b">2</span>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="single-services">
-                <h3 className="ir-b text-center">با متن بلند</h3>
-                <p className="ir-r text-center">
-                  به راحتی زبان انگلیسی را یاد بگیرید و بهترین بازده را داشته
-                  باشید.
-                </p>
-
-                <span className="count ir-b">3</span>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="single-services">
-                <h3 className="ir-b text-center">با اشانتیون متن کوتاه</h3>
-                <p className="ir-r text-center">
-                  به راحتی زبان انگلیسی را یاد بگیرید و بهترین بازده را داشته
-                  باشید.
-                </p>
-
-                <span className="count ir-b">4</span>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="single-services">
-                <h3 className="ir-b text-center">با طرح های فضایی</h3>
-                <p className="ir-r text-center">
-                  به راحتی زبان انگلیسی را یاد بگیرید و بهترین بازده را داشته
-                  باشید.
-                </p>
-
-                <span className="count ir-b">5</span>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="single-services">
-                <h3 className="ir-b text-center">یادگیری آسان</h3>
-                <p className="ir-r text-center">
-                  به راحتی زبان انگلیسی را یاد بگیرید و بهترین بازده را داشته
-                  باشید.
-                </p>
-
-                <span className="count ir-b">6</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
         <div className="services-bg">
-          <img src="assets/img/product-features-bg.png" alt="Image" />
+          <img src="/assets/img/product-features-bg.png" alt="Image" />
         </div>
       </section>
+    ) : (
+      <Loading />
     );
   }
 }

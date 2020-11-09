@@ -1,21 +1,22 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 export class AboutTitle extends Component {
   state = {};
   render() {
     return (
-      <div class="page-title-area bg-29">
-        <div class="container">
-          <div class="page-title-content">
-            <h2 class="ir-b">درباره ما</h2>
+      <div className="page-title-area bg-29">
+        <div className="container">
+          <div className="page-title-content">
+            <h2 className="ir-b">درباره ما</h2>
             <ul>
               <li>
-                <a class="ir-r" href="/">
+                <Link className="ir-r" to="/">
                   {" "}
                   خانه{" "}
-                </a>
+                </Link>
               </li>
 
-              <li class="ir-r active">درباره ما</li>
+              <li className="ir-r active">درباره ما</li>
             </ul>
           </div>
         </div>
