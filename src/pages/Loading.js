@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PleaseWait from "../component/loading/pleaseWait";
 import "./loading.css";
 
 class LoadingPage extends Component {
@@ -7,7 +6,7 @@ class LoadingPage extends Component {
   render() {
     return (
       <div>
-        <div className="ir-r mx-auto d-block" style={{ marginTop: 100 }}>
+        <div className="ir-r mx-auto d-block" style={{ marginTop: 200 }}>
           <h3 className="d-block ir-r mx-auto text-center w-50">
             {" لطفا صبر کنید..."}
           </h3>
@@ -21,6 +20,7 @@ class LoadingPage extends Component {
             marginRight: "auto",
             marginLeft: "auto",
             backgroundColor: "#fff",
+            height: 650,
           }}
         >
           <div className="ldio-ytusknw982b mx-auto">

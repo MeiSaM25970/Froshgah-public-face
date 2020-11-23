@@ -30,8 +30,8 @@ export function ErrorPage2() {
           >
             لطفا دوباره امتحان کنید.
           </span>
-          <Link
-            to="/"
+          <a
+            href="/"
             className="mx-auto mt-30"
             style={{
               marginBottom: 200,
@@ -41,7 +41,7 @@ export function ErrorPage2() {
           >
             {" "}
             بازگشت به صفحه اصلی
-          </Link>
+          </a>
         </div>
       </div>
     </div>

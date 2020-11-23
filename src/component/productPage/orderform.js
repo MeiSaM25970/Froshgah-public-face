@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { InputCity, selectCityStore } from "../inputCity";
 import * as userService from "../../service";
 import validator from "validator";
-import { Redirect } from "react-router-dom";
 
 export class OrderForm extends Component {
   state = {

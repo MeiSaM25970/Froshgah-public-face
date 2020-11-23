@@ -13,6 +13,7 @@ import { NavBar } from "./component/Navbar/navbar";
 import { AboutPage } from "./pages/about";
 import { ContactPage } from "./pages/contact";
 import { SingleBlock } from "./pages/singleBlock";
+import { TrackingPage } from "./pages/tarckingPage";
 
 function App() {
   const navFoot = () => {
@@ -49,6 +50,16 @@ function App() {
               </Page>
             )}
           />
+          <Route
+            path="/tracking"
+            exact
+            render={(props) => (
+              <Page title="صفحه محصولات">
+                <TrackingPage {...props} />
+              </Page>
+            )}
+          />
+
           <Route
             path="/contact"
             exact

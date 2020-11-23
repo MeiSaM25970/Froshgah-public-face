@@ -163,7 +163,12 @@ export class NavBar extends Component {
                         {this.state.openDropClick2 ? "-" : "+"}
                       </a>
                     </li>
-
+                    <li className="nav-item">
+                      <Link to="/tracking" className="nav-link ir-r">
+                        {" "}
+                        پیگیری سفارشات{" "}
+                      </Link>
+                    </li>
                     <li className="nav-item">
                       <Link to="/about" className="nav-link ir-r">
                         {" "}
@@ -268,7 +273,12 @@ export class NavBar extends Component {
                           </li>
                         </ul>
                       </li>
-
+                      <li className="nav-item">
+                        <Link to="/tracking" className="nav-link ir-r">
+                          {" "}
+                          پیگیری سفارشات{" "}
+                        </Link>
+                      </li>
                       <li className="nav-item">
                         <Link to="/about" className="nav-link ir-r">
                           {" "}
