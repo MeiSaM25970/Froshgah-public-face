@@ -633,67 +633,67 @@ export class InputCity extends Component {
     selectCityStore.dispatch(addCity(cities));
   }
   translateCity() {
-    if (this.state.province == "تهران") {
+    if (this.state.province === "تهران") {
       this.setState({ areaTranslate: "tehran" });
-    } else if (this.state.province == "گیلان") {
+    } else if (this.state.province === "گیلان") {
       this.setState({ areaTranslate: "gilan" });
-    } else if (this.state.province == "آذربایجان شرقی") {
+    } else if (this.state.province === "آذربایجان شرقی") {
       this.setState({ areaTranslate: "azerbaijanSharghi" });
-    } else if (this.state.province == "خوزستان") {
+    } else if (this.state.province === "خوزستان") {
       this.setState({ areaTranslate: "khozestan" });
-    } else if (this.state.province == "فارس") {
+    } else if (this.state.province === "فارس") {
       this.setState({ areaTranslate: "fars" });
-    } else if (this.state.province == "اصفهان") {
+    } else if (this.state.province === "اصفهان") {
       this.setState({ areaTranslate: "isfahan" });
-    } else if (this.state.province == "خراسان رضوی") {
+    } else if (this.state.province === "خراسان رضوی") {
       this.setState({ areaTranslate: "khorasanRazavi" });
-    } else if (this.state.province == "قزوین") {
+    } else if (this.state.province === "قزوین") {
       this.setState({ areaTranslate: "ghazvin" });
-    } else if (this.state.province == "سمنان") {
+    } else if (this.state.province === "سمنان") {
       this.setState({ areaTranslate: "semnan" });
-    } else if (this.state.province == "قم") {
+    } else if (this.state.province === "قم") {
       this.setState({ areaTranslate: "ghom" });
-    } else if (this.state.province == "مرکزی") {
+    } else if (this.state.province === "مرکزی") {
       this.setState({ areaTranslate: "markazi" });
-    } else if (this.state.province == "زنجان") {
+    } else if (this.state.province === "زنجان") {
       this.setState({ areaTranslate: "zanjan" });
-    } else if (this.state.province == "مازندران") {
+    } else if (this.state.province === "مازندران") {
       this.setState({ areaTranslate: "mazandaran" });
-    } else if (this.state.province == "گلستان") {
+    } else if (this.state.province === "گلستان") {
       this.setState({ areaTranslate: "golestan" });
-    } else if (this.state.province == "اردبیل") {
+    } else if (this.state.province === "اردبیل") {
       this.setState({ areaTranslate: "ardabil" });
-    } else if (this.state.province == "آذربایجان غربی") {
+    } else if (this.state.province === "آذربایجان غربی") {
       this.setState({ areaTranslate: "azerbaijanGharbi" });
-    } else if (this.state.province == "همدان") {
+    } else if (this.state.province === "همدان") {
       this.setState({ areaTranslate: "hamadan" });
-    } else if (this.state.province == "کردستان") {
+    } else if (this.state.province === "کردستان") {
       this.setState({ areaTranslate: "kordestan" });
-    } else if (this.state.province == "کرمانشاه") {
+    } else if (this.state.province === "کرمانشاه") {
       this.setState({ areaTranslate: "kermanshah" });
-    } else if (this.state.province == "لرستان") {
+    } else if (this.state.province === "لرستان") {
       this.setState({ areaTranslate: "lorestan" });
-    } else if (this.state.province == "بوشهر") {
+    } else if (this.state.province === "بوشهر") {
       this.setState({ areaTranslate: "boshehr" });
-    } else if (this.state.province == "کرمان") {
+    } else if (this.state.province === "کرمان") {
       this.setState({ areaTranslate: "kerman" });
-    } else if (this.state.province == "هرمزگان") {
+    } else if (this.state.province === "هرمزگان") {
       this.setState({ areaTranslate: "hormozgan" });
-    } else if (this.state.province == "چهارمحال و بختیاری") {
+    } else if (this.state.province === "چهارمحال و بختیاری") {
       this.setState({ areaTranslate: "chaharmahalVaBakhtiari" });
-    } else if (this.state.province == "یزد") {
+    } else if (this.state.province === "یزد") {
       this.setState({ areaTranslate: "yazd" });
-    } else if (this.state.province == "سیستان و بلوچستان") {
+    } else if (this.state.province === "سیستان و بلوچستان") {
       this.setState({ areaTranslate: "sistanVaBalochestan" });
-    } else if (this.state.province == "ایلام") {
+    } else if (this.state.province === "ایلام") {
       this.setState({ areaTranslate: "ilam" });
-    } else if (this.state.province == "کهگلویه و بویراحمد") {
+    } else if (this.state.province === "کهگلویه و بویراحمد") {
       this.setState({ areaTranslate: "kohkiloyeVaBoyerahmad" });
-    } else if (this.state.province == "خراسان شمالی") {
+    } else if (this.state.province === "خراسان شمالی") {
       this.setState({ areaTranslate: "khorasanShomali" });
-    } else if (this.state.province == "خراسان جنوبی") {
+    } else if (this.state.province === "خراسان جنوبی") {
       this.setState({ areaTranslate: "khorasanJonobi" });
-    } else if (this.state.province == "البرز") {
+    } else if (this.state.province === "البرز") {
       this.setState({ areaTranslate: "alborz" });
     } else {
       this.setState({ areaTranslate: "empty" });

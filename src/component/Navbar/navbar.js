@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import * as userService from "../../service";
+import PleaseWait from "../loading/pleaseWait";
 
 export class NavBar extends Component {
   state = {
@@ -10,7 +12,25 @@ export class NavBar extends Component {
     openDropClick1: false,
     openDropClick2: false,
     closeDropStyle: "none",
+    data: [],
+    categories: [],
   };
+  componentDidMount() {
+    this.fetchData();
+    this.fetchCategories();
+  }
+  fetchData() {
+    userService
+      .getProduct()
+      .then((res) => this.setState({ data: res.data }))
+      .catch((err) => console.log(err));
+  }
+  fetchCategories() {
+    userService
+      .fetchCategories()
+      .then((res) => this.setState({ categories: res.data }))
+      .catch((err) => console.log(err));
+  }
   render() {
     return (
       <Fragment>
@@ -54,7 +74,11 @@ export class NavBar extends Component {
                     }
                   >
                     <li className="nav-item">
-                      <Link to="/" className="nav-link ir-r active">
+                      <Link
+                        to="/"
+                        className="nav-link ir-r active"
+                        onClick={() => this.setState({ isOpen: false })}
+                      >
                         {" "}
                         خانه{" "}
                       </Link>
@@ -82,16 +106,21 @@ export class NavBar extends Component {
                             : { display: this.state.closeDropStyle }
                         }
                       >
-                        <li className="nav-item">
-                          <a href="/" className="nav-link ir-r active">
-                            دوره 1
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="/" className="nav-link ir-r">
-                            دوره 2
-                          </a>
-                        </li>
+                        {this.state.data.length > 0 ? (
+                          this.state.data.map((product, index) => (
+                            <li className="nav-item" key={index}>
+                              <Link
+                                to={"/products/" + product._id}
+                                className="nav-link ir-r active"
+                                onClick={() => this.setState({ isOpen: false })}
+                              >
+                                {product.title}
+                              </Link>
+                            </li>
+                          ))
+                        ) : (
+                          <PleaseWait />
+                        )}
                       </ul>
                       <a
                         className="mean-expand"
@@ -129,26 +158,21 @@ export class NavBar extends Component {
                             : { display: this.state.closeDropStyle }
                         }
                       >
-                        <li className="nav-item">
-                          <a href="/" className="nav-link ir-r active">
-                            اسپیکینگ
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="/" className="nav-link ir-r">
-                            ریدینگ
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="/" className="nav-link ir-r">
-                            وکب
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="/" className="nav-link ir-r">
-                            رایتیینگ
-                          </a>
-                        </li>
+                        {this.state.categories.length > 0 ? (
+                          this.state.categories.map((item, index) => (
+                            <li className="nav-item" key={index}>
+                              <Link
+                                to={`/weblogs/category/${item._id}`}
+                                className="nav-link ir-r "
+                                onClick={() => this.setState({ isOpen: false })}
+                              >
+                                {item.title}
+                              </Link>
+                            </li>
+                          ))
+                        ) : (
+                          <PleaseWait />
+                        )}
                       </ul>
                       <a
                         className="mean-expand"
@@ -164,20 +188,32 @@ export class NavBar extends Component {
                       </a>
                     </li>
                     <li className="nav-item">
-                      <Link to="/tracking" className="nav-link ir-r">
+                      <Link
+                        to="/tracking"
+                        className="nav-link ir-r"
+                        onClick={() => this.setState({ isOpen: false })}
+                      >
                         {" "}
                         پیگیری سفارشات{" "}
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/about" className="nav-link ir-r">
+                      <Link
+                        to="/about"
+                        className="nav-link ir-r"
+                        onClick={() => this.setState({ isOpen: false })}
+                      >
                         {" "}
                         درباره ما{" "}
                       </Link>
                     </li>
 
                     <li className="nav-item mean-last">
-                      <Link to="/contact" className="nav-link ir-r">
+                      <Link
+                        to="/contact"
+                        className="nav-link ir-r"
+                        onClick={() => this.setState({ isOpen: false })}
+                      >
                         {" "}
                         تماس با ما{" "}
                       </Link>
@@ -199,7 +235,11 @@ export class NavBar extends Component {
             <div className="main-nav">
               <div className="container-fluid">
                 <nav className="navbar navbar-expand-md">
-                  <Link className="navbar-brand" to="/">
+                  <Link
+                    className="navbar-brand"
+                    to="/"
+                    onClick={() => this.setState({ isOpen: false })}
+                  >
                     <img
                       className="logo-img"
                       src="/assets/img/logo.png"
@@ -218,7 +258,11 @@ export class NavBar extends Component {
                   >
                     <ul className="navbar-nav m-auto">
                       <li className="nav-item">
-                        <Link to="/" className="nav-link ir-r active">
+                        <Link
+                          to="/"
+                          className="nav-link ir-r active"
+                          onClick={() => this.setState({ isOpen: false })}
+                        >
                           {" "}
                           خانه{" "}
                         </Link>
@@ -231,16 +275,23 @@ export class NavBar extends Component {
                         </a>
 
                         <ul className="dropdown-menu">
-                          <li className="nav-item">
-                            <a href="/" className="nav-link ir-r active">
-                              دوره 1
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="/" className="nav-link ir-r">
-                              دوره 2
-                            </a>
-                          </li>
+                          {this.state.data.length > 0 ? (
+                            this.state.data.map((product, index) => (
+                              <li className="nav-item" key={index}>
+                                <Link
+                                  to={"/products/" + product._id}
+                                  className="nav-link ir-r"
+                                  onClick={() =>
+                                    this.setState({ isOpen: false })
+                                  }
+                                >
+                                  {product.title}
+                                </Link>
+                              </li>
+                            ))
+                          ) : (
+                            <PleaseWait />
+                          )}
                         </ul>
                       </li>
 
@@ -251,43 +302,52 @@ export class NavBar extends Component {
                         </a>
 
                         <ul className="dropdown-menu">
-                          <li className="nav-item">
-                            <a href="/" className="nav-link ir-r active">
-                              اسپیکینگ
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="/" className="nav-link ir-r">
-                              ریدینگ
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="/" className="nav-link ir-r">
-                              وکب
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="/" className="nav-link ir-r">
-                              رایتیینگ
-                            </a>
-                          </li>
+                          {this.state.categories.length > 0 ? (
+                            this.state.categories.map((item, index) => (
+                              <li className="nav-item" key={index}>
+                                <Link
+                                  to={`/weblogs/category/${item._id}`}
+                                  className="nav-link ir-r "
+                                  onClick={() =>
+                                    this.setState({ isOpen: false })
+                                  }
+                                >
+                                  {item.title}
+                                </Link>
+                              </li>
+                            ))
+                          ) : (
+                            <PleaseWait />
+                          )}
                         </ul>
                       </li>
                       <li className="nav-item">
-                        <Link to="/tracking" className="nav-link ir-r">
+                        <Link
+                          to="/tracking"
+                          className="nav-link ir-r"
+                          onClick={() => this.setState({ isOpen: false })}
+                        >
                           {" "}
                           پیگیری سفارشات{" "}
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link to="/about" className="nav-link ir-r">
+                        <Link
+                          to="/about"
+                          className="nav-link ir-r"
+                          onClick={() => this.setState({ isOpen: false })}
+                        >
                           {" "}
                           درباره ما{" "}
                         </Link>
                       </li>
 
                       <li className="nav-item">
-                        <Link to="/contact" className="nav-link ir-r">
+                        <Link
+                          to="/contact"
+                          className="nav-link ir-r"
+                          onClick={() => this.setState({ isOpen: false })}
+                        >
                           {" "}
                           تماس با ما{" "}
                         </Link>

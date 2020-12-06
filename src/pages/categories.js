@@ -1,40 +1,33 @@
 import React, { Component, Fragment } from "react";
 import { BlogList } from "../component/blog";
-import { Introduction } from "../component/introduction";
+import { CategoriesPageTitle } from "../component/categories";
 import Loading from "../component/loading";
 import { LoadPage } from "../component/loadPage";
-import { Pricing } from "../component/pricing";
-import { Products } from "../component/products";
 import { ScrollTop } from "../component/scrollTop";
 import * as userService from "../service";
 import LoadingPage from "./Loading";
 
-export class HomePage extends Component {
+export class CategoriesBlogs extends Component {
   state = { data: [], loading: true };
   async componentDidMount() {
-    await this.fetchData();
-    await this.fetchWeblog();
-    await this.counter();
+    const id = this.props.match.params.id;
+    await this.fetchData(id);
   }
-  fetchData() {
+
+  fetchData(id) {
     userService
-      .getProduct()
+      .filterWeblogByCategory(id)
       .then((res) => {
         this.setState({ data: res.data, loading: false });
       })
       .catch(() => this.props.history.push("/error"));
   }
-  counter() {
-    userService.counter();
-  }
-  fetchWeblog() {
-    userService
-      .fetchWeblog()
-      .then((res) => this.setState({ weblog: res.data, loading: false }))
-      .catch((err) => {
-        this.setState({ loading: false });
-        console.log(err);
-      });
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.params.id !== newProps.match.params.id) {
+      const id = newProps.match.params.id;
+      this.fetchData(id);
+    }
   }
   render() {
     return this.state.loading ? (
@@ -42,10 +35,8 @@ export class HomePage extends Component {
     ) : this.state.data ? (
       <Fragment>
         <LoadPage />
-        <Introduction />
-        <Products data={this.state.data} />
-        <Pricing data={this.state.data} />
-        <BlogList data={this.state.weblog} {...this.props} />
+        <CategoriesPageTitle category={this.state.category} {...this.props} />
+        <BlogList data={this.state.data} {...this.props} />
         <ScrollTop />
       </Fragment>
     ) : (

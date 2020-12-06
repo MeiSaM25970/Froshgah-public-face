@@ -49,7 +49,6 @@ export class TrackingReport extends Component {
     }
   }
   render() {
-    console.log(this.state);
     return this.state.data ? (
       <div
         className="content container text-right ir-r"
@@ -59,7 +58,7 @@ export class TrackingReport extends Component {
           marginTop: "140px",
         }}
       >
-        <div className="col-md-12">
+        <div className="col-md-12 ir-r">
           <div className="card ">
             <div className="card-header card-header-rose card-header-text">
               <div className="card-text">
@@ -79,7 +78,7 @@ export class TrackingReport extends Component {
                   </label>
                   <div className="col-sm-8">
                     <div className="form-group bmd-form-group">
-                      <span>{this.state.data.fullName}</span>
+                      <span className="ir-r">{this.state.data.fullName}</span>
                     </div>
                   </div>
                 </div>
@@ -90,18 +89,47 @@ export class TrackingReport extends Component {
                   </label>
                   <div className="col-sm-8">
                     <div className="form-group bmd-form-group">
-                      <span>{this.state.data.mobile}</span>
+                      <span className="ir-r">{this.state.data.mobile}</span>
                     </div>
                   </div>
                 </div>
+                <div className="row">
+                  <label className="col-sm-3 col-form-label ir-r order-detail-text-right">
+                    محصول خریداری شده:
+                  </label>
+                  <div className="col-sm-8">
+                    <div className="form-group bmd-form-group">
+                      <span className="ir-r">
+                        {this.state.data.productName}
+                      </span>
 
+                      {/* <span className="bmd-help">
+                        A block of help text that breaks onto a new line.
+                      </span> */}
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <label className="col-sm-3 col-form-label ir-r order-detail-text-right">
+                    قیمت:
+                  </label>
+                  <div className="col-sm-8">
+                    <div className="form-group bmd-form-group">
+                      <span className="ir-r">{this.state.data.price}</span>
+
+                      {/* <span className="bmd-help">
+                        A block of help text that breaks onto a new line.
+                      </span> */}
+                    </div>
+                  </div>
+                </div>
                 <div className="row">
                   <label className="col-sm-3 col-form-label ir-r text-right">
                     تاریخ ثبت:
                   </label>
                   <div className="col-sm-8">
                     <div className="form-group bmd-form-group">
-                      <span>
+                      <span className="ir-r">
                         {moment(
                           this.state.data.date,
                           "YYYY/MM/DD HH:mm:ss"
@@ -116,7 +144,9 @@ export class TrackingReport extends Component {
                   </label>
                   <div className="col-sm-8">
                     <div className="form-group bmd-form-group">
-                      <span>{this.state.data.trackingCode}</span>
+                      <span className="ir-r">
+                        {this.state.data.trackingCode}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -124,20 +154,19 @@ export class TrackingReport extends Component {
                   <label className="col-sm-3 col-form-label ir-r text-right">
                     آدرس:
                   </label>
-                  <div className="col-sm-8">
+                  <div className="col-sm-8 ir-r">
                     {" "}
-                    <span>
+                    <span className="ir-r">
                       {this.state.data.area}
                       {"  -  "}
                     </span>
-                    <span>
-                      {}
+                    <span className="ir-r">
                       {this.state.data.city + "  "}
                       {"  -  "}
                     </span>
                     <div>
                       <div className="form-group bmd-form-group">
-                        <span>{this.state.data.address}</span>
+                        <span className="ir-r">{this.state.data.address}</span>
                       </div>
                     </div>
                   </div>
@@ -149,7 +178,7 @@ export class TrackingReport extends Component {
                   </label>
                   <div className="col-sm-8 ">
                     <div className="form-group bmd-form-group">
-                      <span>{this.state.data.postCode}</span>
+                      <span className="ir-r">{this.state.data.postCode}</span>
                     </div>
                   </div>
                 </div>
@@ -160,7 +189,7 @@ export class TrackingReport extends Component {
                   </label>
                   <div className="col-sm-8 ">
                     <div className="form-group bmd-form-group">
-                      <span className="form-control">
+                      <span className="form-control ir-r">
                         {this.state.orderStatus}
                       </span>
                     </div>
@@ -173,7 +202,7 @@ export class TrackingReport extends Component {
                     </label>
                     <div className="col-sm-8 ">
                       <div className="form-group bmd-form-group">
-                        <span>
+                        <span className="ir-r">
                           {this.state.data.cancelOrderDes
                             ? this.state.data.cancelOrderDes
                             : ""}
@@ -188,7 +217,7 @@ export class TrackingReport extends Component {
                     </label>
                     <div className="col-sm-8 ">
                       <div className="form-group bmd-form-group">
-                        <span>
+                        <span className="ir-r">
                           {this.state.data.trackingPost
                             ? this.state.data.trackingPost
                             : ""}
@@ -200,11 +229,11 @@ export class TrackingReport extends Component {
                   ""
                 )}
                 <div className="row mt-5 mb-4">
-                  <div className="col-sm-6 mx-auto">
-                    <Link to="/" className="btn btn-info">
+                  <div className="col-sm-6 mx-auto ir-r">
+                    <Link to="/" className="btn btn-info ir-r">
                       صفحه اصلی
                     </Link>
-                    <Link className="btn btn-muted mr-3" to="/tracking">
+                    <Link className="btn btn-muted mr-3 ir-r" to="/tracking">
                       بازگشت
                     </Link>
                   </div>

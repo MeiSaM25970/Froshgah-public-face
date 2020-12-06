@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Page from "./component/pageTitle/pageTitle";
 
-import { HomePage } from "./pages/";
+import { HomePage, Weblogs } from "./pages/";
 import { ErrorPage2 } from "./pages/ErrorPage2";
 import LoadingPage from "./pages/Loading";
 import { ProductsPage } from "./pages/products";
@@ -12,14 +12,15 @@ import { FooterBottom, FooterTop } from "./component/footer";
 import { NavBar } from "./component/Navbar/navbar";
 import { AboutPage } from "./pages/about";
 import { ContactPage } from "./pages/contact";
-import { SingleBlock } from "./pages/singleBlock";
 import { TrackingPage } from "./pages/tarckingPage";
+import { CategoriesBlogs } from "./pages/categories";
+import { SingleBlogPage } from "./pages/singleBlog";
 
 function App() {
   const navFoot = () => {
-    if (window.location.pathname == "/error") {
+    if (window.location.pathname === "/error") {
       return false;
-    } else if (window.location.pathname == "/loading") {
+    } else if (window.location.pathname === "/loading") {
       return false;
     } else {
       return true;
@@ -42,6 +43,24 @@ function App() {
             )}
           />
           <Route
+            path="/weblogs"
+            exact
+            render={(props) => (
+              <Page title="مقالات">
+                <Weblogs {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/weblogs/category/:id"
+            exact
+            render={(props) => (
+              <Page title="مقالات">
+                <CategoriesBlogs {...props} />
+              </Page>
+            )}
+          />
+          <Route
             path="/products/:id"
             exact
             render={(props) => (
@@ -59,7 +78,15 @@ function App() {
               </Page>
             )}
           />
-
+          <Route
+            path="/singleBlog/:id"
+            exact
+            render={(props) => (
+              <Page title="مقالات">
+                <SingleBlogPage {...props} />
+              </Page>
+            )}
+          />
           <Route
             path="/contact"
             exact
@@ -96,6 +123,7 @@ function App() {
               </Page>
             )}
           />
+          <Redirect to="/" />
         </Switch>
         {showNavFoot ? <FooterTop /> : ""}
         {showNavFoot ? <FooterBottom /> : ""}

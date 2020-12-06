@@ -2,18 +2,28 @@ import React, { Component, Fragment } from "react";
 import { AboutComponent } from "../component/about/aboutSection";
 import { IntroductionAbout } from "../component/about/introduction";
 import { AboutTitle } from "../component/about/title";
+import PleaseWait from "../component/loading/pleaseWait";
 import { ScrollTop } from "../component/scrollTop";
+import * as userService from "../service";
 
 export class AboutPage extends Component {
-  state = {};
+  state = { data: [], arrNum: 0 };
+  componentDidMount() {
+    userService.fetchAboutUs().then((res) => {
+      const arrayNumber = res.data.length - 1;
+      this.setState({ data: res.data, arrNum: arrayNumber });
+    });
+  }
   render() {
-    return (
+    return this.state.data[0] ? (
       <Fragment>
         <AboutTitle />
-        <IntroductionAbout />
-        <AboutComponent />
+        <IntroductionAbout data={this.state.data[this.state.arrNum]} />
+        <AboutComponent data={this.state.data[this.state.arrNum]} />
         <ScrollTop />
       </Fragment>
+    ) : (
+      <PleaseWait />
     );
   }
 }

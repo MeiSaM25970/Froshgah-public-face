@@ -8,7 +8,7 @@ export class PricingList extends Component {
   render() {
     return this.props.data ? (
       this.props.data.map((item, index) => (
-        <div className="col-lg-4 col-sm-6 mr-auto" key={index}>
+        <div className="col-lg-5 col-sm-6 mr-auto" key={index}>
           <Link to={"/products/" + item._id}>
             <div className="single-price-card">
               <div className="price-title">
@@ -27,13 +27,13 @@ export class PricingList extends Component {
                 ))}
               </ul>
 
-              <a
+              <span
                 href="#"
                 className="default-btn ir-r d-flex justify-content-center"
               >
                 جزئیات
                 <span className="flaticon-next d-block mr-2"></span>
-              </a>
+              </span>
             </div>
           </Link>
         </div>

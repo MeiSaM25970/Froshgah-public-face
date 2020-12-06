@@ -1,6 +1,87 @@
 import React, { Component } from "react";
+import validator from "validator";
+import * as userService from "../../service";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+
 export class ContactForm extends Component {
-  state = {};
+  state = {
+    fullName: "",
+    email: "",
+    message: "",
+    fullNameIsEmpty: false,
+    emailIsEmpty: false,
+    emailTypeErr: false,
+    messageIsEmpty: false,
+    isValid: false,
+  };
+
+  changeHandler(e) {
+    const contact = {};
+    const name = e.target.name;
+    const value = e.target.value;
+    contact[name] = value;
+    this.setState({ ...this.state, ...contact });
+  }
+  async submitHandler(e) {
+    await e.preventDefault();
+    await this.validation();
+    if (this.state.isValid) {
+      const contact = {
+        fullName: this.state.fullName,
+        email: this.state.email,
+        message: this.state.message,
+      };
+      userService
+        .createContact(contact)
+        .then((res) => {
+          if (res.status === 200) {
+            confirmAlert({
+              customUI: ({ onClose }) => {
+                return (
+                  <div className="custom-ui text-right ">
+                    <i className="material-icons-outlined">done</i>
+
+                    <p className="ir-r">پیام شما با موفقیت ارسال شد.</p>
+
+                    <button
+                      className="default-btn btn-two ir-r"
+                      onClick={() => {
+                        onClose();
+                      }}
+                    >
+                      باشه
+                    </button>
+                  </div>
+                );
+              },
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }
+  validation() {
+    const fullNameIsEmpty = validator.isEmpty(this.state.fullName);
+    const emailIsEmpty = validator.isEmpty(this.state.email);
+    const emailType = validator.isEmail(this.state.email);
+    const messageIsEmpty = validator.isEmpty(this.state.message);
+    if (fullNameIsEmpty) {
+      this.setState({ fullNameIsEmpty: true });
+    } else this.setState({ fullNameIsEmpty: false });
+    if (emailIsEmpty) {
+      this.setState({ emailIsEmpty: true });
+    } else this.setState({ emailIsEmpty: false });
+    if (emailType) {
+      this.setState({ emailTypeErr: false });
+    } else this.setState({ emailTypeErr: true });
+    if (messageIsEmpty) {
+      this.setState({ messageIsEmpty: true });
+    } else this.setState({ messageIsEmpty: false });
+    if (!fullNameIsEmpty && !emailIsEmpty && emailType && !messageIsEmpty) {
+      this.setState({ isValid: true });
+    } else this.setState({ isValid: false });
+  }
   render() {
     return (
       <div className="col-lg-8">
@@ -9,19 +90,25 @@ export class ContactForm extends Component {
             <div className="contact-title">
               <h2 className="ir-b">تماس با ما</h2>
             </div>
-            <form id="contactForm">
+            <form id="contactForm" onSubmit={this.submitHandler.bind(this)}>
               <div className="row">
                 <div className="col-lg-6 col-sm-6">
                   <div className="form-group">
                     <label className="ir-r">نام و نام خانوادگی</label>
                     <input
                       type="text"
-                      name="name"
+                      name="fullName"
                       id="name"
                       className="form-control ir-r"
-                      required
+                      onChange={this.changeHandler.bind(this)}
                     />
-                    <div className="help-block with-errors ir-r"></div>
+                    {this.state.fullNameIsEmpty ? (
+                      <div className="help-block text-danger with-errors ir-r mt-1">
+                        نام و نام خانوادگی الزامیست.
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
 
@@ -33,9 +120,19 @@ export class ContactForm extends Component {
                       name="email"
                       id="email"
                       className="form-control ir-r"
-                      required
+                      onChange={this.changeHandler.bind(this)}
                     />
-                    <div className="help-block with-errors ir-r"></div>
+                    {this.state.emailIsEmpty ? (
+                      <div className="help-block text-danger with-errors ir-r mt-1">
+                        وارد نمودن ایمیل الزامیست.
+                      </div>
+                    ) : this.state.emailTypeErr ? (
+                      <div className="help-block text-danger with-errors ir-r mt-1">
+                        ایمیل شما اشتباه است .
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
 
@@ -48,10 +145,16 @@ export class ContactForm extends Component {
                       id="message"
                       cols="30"
                       rows="10"
-                      required
+                      onChange={this.changeHandler.bind(this)}
                       data-error="Write your message"
                     ></textarea>
-                    <div className="help-block with-errors"></div>
+                    {this.state.fullNameIsEmpty ? (
+                      <div className="help-block text-danger with-errors ir-r mt-1">
+                        پیامی برای ما بنویسید.{" "}
+                      </div>
+                    ) : (
+                      ""
+                    )}{" "}
                   </div>
                 </div>
 

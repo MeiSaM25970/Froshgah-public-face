@@ -19,6 +19,11 @@ export class ProductsPage extends Component {
       this.setState({ data: res.data });
     });
   }
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.params.id !== newProps.match.params.id) {
+      this.fetchData(newProps.match.params.id);
+    }
+  }
   render() {
     return (
       <Fragment>

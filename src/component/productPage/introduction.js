@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { API_ADDRESS_SERVICE } from "../../env";
 import Loading from "../loading";
+import numeral from "numeral";
 
 export class IntroductionProduct extends Component {
   state = {};
@@ -24,6 +25,11 @@ export class IntroductionProduct extends Component {
               <p className="d-block text-justify ir-r mb-3">
                 {this.props.data.description}
               </p>
+              <h2 className="d-block text-right ir-b mb-3 c-success">
+                {"قیمت: " +
+                  numeral(this.props.data.price).format(0, 0) +
+                  " تومان "}
+              </h2>
               <a className="default-btn ml-2 ir-r mb-0" href="#order">
                 سفارش این محصول
               </a>

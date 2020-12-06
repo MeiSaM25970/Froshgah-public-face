@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Introduction extends Component {
   state = {};
@@ -25,9 +26,18 @@ export class Introduction extends Component {
                 در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
                 نیاز
               </p>
-              <a className="default-btn ir-r mb-0" href="#products">
+              <a
+                className="default-btn ir-r mb-3 mb-md-0 d-block d-md-inline-block"
+                href="#products"
+              >
                 مشاهده دوره ها
               </a>
+              <Link
+                to="/weblogs"
+                className="default-btn ir-r mb-0 mr-0 mr-md-1 mr-lg-3 d-block d-md-inline-block"
+              >
+                مشاهده مقالات آموزشی
+              </Link>
             </div>
           </div>
         </div>

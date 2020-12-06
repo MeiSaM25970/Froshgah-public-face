@@ -16,10 +16,10 @@ export class Product extends Component {
               <h3 className="ir-b mt-3">{item.title}</h3>
               <p className="ir-r">{item.description}</p>
 
-              <Link to={"/products/" + item._id} className="read-more ir-r">
+              <span className="read-more ir-r">
                 اطلاعات بیشتر
                 <span className="flaticon-next mr-2"></span>
-              </Link>
+              </span>
             </div>
           </Link>
         </div>
