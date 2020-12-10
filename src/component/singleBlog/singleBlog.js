@@ -24,7 +24,7 @@ export class SingleBlog extends Component {
               <div className="single-blog-content">
                 <img
                   src={API_ADDRESS_SERVICE + this.state.data.imgPath}
-                  alt="Image"
+                  alt="عکس"
                 />
 
                 <div className="blog-top-content">
@@ -41,7 +41,7 @@ export class SingleBlog extends Component {
                             }
                             width="50"
                             height="50"
-                            alt="Image"
+                            alt="عکس"
                             className="ml-2"
                           />
                           {this.state.data.adminInfo

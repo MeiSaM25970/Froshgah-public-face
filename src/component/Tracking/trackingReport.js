@@ -46,6 +46,8 @@ export class TrackingReport extends Component {
         return this.setState({
           orderStatus: "سفارش به شما تحویل داده شده است.",
         });
+      default:
+        return data;
     }
   }
   render() {

@@ -12,18 +12,10 @@ import LoadingPage from "./Loading";
 export class HomePage extends Component {
   state = { data: [], loading: true };
   async componentDidMount() {
-    await this.fetchData();
     await this.fetchWeblog();
     await this.counter();
   }
-  fetchData() {
-    userService
-      .getProduct()
-      .then((res) => {
-        this.setState({ data: res.data, loading: false });
-      })
-      .catch(() => this.props.history.push("/error"));
-  }
+
   counter() {
     userService.counter();
   }
@@ -37,13 +29,14 @@ export class HomePage extends Component {
       });
   }
   render() {
+    const products = this.props.products;
     return this.state.loading ? (
       <LoadingPage />
     ) : this.state.data ? (
       <Fragment>
         <LoadPage />
         <Introduction />
-        <Products data={this.state.data} />
+        <Products data={products} />
         <Pricing data={this.state.data} />
         <BlogList data={this.state.weblog} {...this.props} />
         <ScrollTop />

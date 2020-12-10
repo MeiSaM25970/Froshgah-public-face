@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 export class FooterTop extends Component {
   state = {};
+
   render() {
+    let products = this.props.products;
     return (
       <footer className="footer-top-area pt-100 pb-70">
         <div className="container">
@@ -12,7 +15,7 @@ export class FooterTop extends Component {
                   <img
                     className="logo-img"
                     src="/assets/img/logo.png"
-                    alt="Image"
+                    alt="عکس"
                   />
                 </a>
 
@@ -52,30 +55,33 @@ export class FooterTop extends Component {
                 <h3 className="ir-b">لینک های مهم</h3>
 
                 <ul className="import-link">
+                  {products
+                    ? products.map((product, index) => (
+                        <li key={index}>
+                          <Link
+                            to={`/products/${product._id}`}
+                            className="ir-r"
+                            href="#"
+                          >
+                            {product.title}
+                          </Link>
+                        </li>
+                      ))
+                    : ""}
                   <li>
-                    <a className="ir-r" href="#">
-                      دوره 1
-                    </a>
+                    <Link to="/weblogs" className="ir-r" href="#">
+                      وبلاگ
+                    </Link>
                   </li>
                   <li>
-                    <a className="ir-r" href="#">
-                      دوره 2
-                    </a>
-                  </li>
-                  <li>
-                    <a className="ir-r" href="#">
-                      وبلاگ2
-                    </a>
-                  </li>
-                  <li>
-                    <a className="ir-r" href="#">
+                    <Link className="ir-r" to="/about">
                       درباره ما
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="ir-r" href="#">
+                    <Link className="ir-r" to="contact">
                       تماس با ما
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -92,7 +98,12 @@ export class FooterTop extends Component {
                   </li>
                   <li>
                     <i className="bx bxs-envelope"></i>
-                    <a className="ir-r" href="mailto:hello@example.com">
+                    <a
+                      className="ir-r"
+                      href="mailto:hello@example.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       hello@example.com
                     </a>
                   </li>

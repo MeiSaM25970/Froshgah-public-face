@@ -28,7 +28,7 @@ export class FeaturesArea extends Component {
         </div>
 
         <div className="services-bg">
-          <img src="/assets/img/product-features-bg.png" alt="Image" />
+          <img src="/assets/img/product-features-bg.png" alt="عکس" />
         </div>
       </section>
     ) : (

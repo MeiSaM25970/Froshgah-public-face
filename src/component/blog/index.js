@@ -26,10 +26,7 @@ export class BlogList extends Component {
                   <Link to={`/singleBlog/${item._id}`}>
                     {" "}
                     <div className="single-blog-post">
-                      <img
-                        src={API_ADDRESS_SERVICE + item.imgPath}
-                        alt="Image"
-                      />
+                      <img src={API_ADDRESS_SERVICE + item.imgPath} alt="عکس" />
 
                       <div className="news-content">
                         <ul className="admin d-flex justify-content-start mb-3">

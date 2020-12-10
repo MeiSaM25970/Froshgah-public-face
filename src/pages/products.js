@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event";
 import React, { Component, Fragment } from "react";
 import { FeaturesArea } from "../component/productPage/feature";
 import { IntroductionProduct } from "../component/productPage/introduction";

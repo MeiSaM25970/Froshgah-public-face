@@ -20,7 +20,7 @@ export class Products extends Component {
         </div>
 
         <div className="services-bg">
-          <img src="/assets/img/services-bg.jpg" alt="Image" />
+          <img src="/assets/img/services-bg.jpg" alt="عکس" />
         </div>
       </section>
     );

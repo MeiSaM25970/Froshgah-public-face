@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { ScrollTop } from "../component/scrollTop";
-import { Tracking } from "../component/Tracking";
+import { SuccessPayment } from "../component/successPayment";
 
-export class TrackingPage extends Component {
+export class SuccessPaymentPage extends Component {
   state = {};
-
   render() {
     return (
       <Fragment>
-        <Tracking {...this.props} />
+        <SuccessPayment {...this.props} />
         <ScrollTop />
       </Fragment>
     );

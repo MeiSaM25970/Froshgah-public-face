@@ -699,7 +699,7 @@ export class InputCity extends Component {
       this.setState({ areaTranslate: "empty" });
     }
     const filterCity = this.city.filter(
-      (cities) => cities.areaName == this.state.areaTranslate
+      (cities) => cities.areaName === this.state.areaTranslate
     );
     this.setState({ selectCity: filterCity });
   }
@@ -756,7 +756,7 @@ export class InputCity extends Component {
         <div className="col-12 col-md-6">
           <div className="form-group">
             <label className="ir-r">شهر</label>
-            {this.state.areaTranslate == "empty" ? (
+            {this.state.areaTranslate === "empty" ? (
               <span
                 className="form-control ir-r"
                 style={{ backgroundColor: "#eee" }}
@@ -771,7 +771,7 @@ export class InputCity extends Component {
               />
             )}
             <datalist id="citiesList">
-              {this.state.areaTranslate == "empty" ? (
+              {this.state.areaTranslate === "empty" ? (
                 <option>لطفا استان را انتخاب نمایید</option>
               ) : this.state.selectCity[0] ? (
                 this.state.selectCity[0].cities.map((item, index) => (

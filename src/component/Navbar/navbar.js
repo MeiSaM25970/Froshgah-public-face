@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import LoadingPage from "../../pages/Loading";
 import * as userService from "../../service";
 import PleaseWait from "../loading/pleaseWait";
 
@@ -15,16 +16,10 @@ export class NavBar extends Component {
     data: [],
     categories: [],
   };
-  componentDidMount() {
-    this.fetchData();
-    this.fetchCategories();
+  async componentDidMount() {
+    await this.fetchCategories();
   }
-  fetchData() {
-    userService
-      .getProduct()
-      .then((res) => this.setState({ data: res.data }))
-      .catch((err) => console.log(err));
-  }
+
   fetchCategories() {
     userService
       .fetchCategories()
@@ -32,7 +27,9 @@ export class NavBar extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    return (
+    console.log(this.props);
+    const products = this.props.products;
+    return products ? (
       <Fragment>
         <header className="header-area">
           {/* <!-- Start Top Header --> */}
@@ -106,8 +103,8 @@ export class NavBar extends Component {
                             : { display: this.state.closeDropStyle }
                         }
                       >
-                        {this.state.data.length > 0 ? (
-                          this.state.data.map((product, index) => (
+                        {products ? (
+                          products.map((product, index) => (
                             <li className="nav-item" key={index}>
                               <Link
                                 to={"/products/" + product._id}
@@ -222,13 +219,13 @@ export class NavBar extends Component {
                 </nav>
               </div>
               <div className="container-fluid">
-                <a href="index.html" className="logo">
+                <Link to="/" className="logo">
                   <img
                     className="logo-img"
                     src="/assets/img/logo.png"
                     alt="Logo"
                   />
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -275,8 +272,8 @@ export class NavBar extends Component {
                         </a>
 
                         <ul className="dropdown-menu">
-                          {this.state.data.length > 0 ? (
-                            this.state.data.map((product, index) => (
+                          {products ? (
+                            products.map((product, index) => (
                               <li className="nav-item" key={index}>
                                 <Link
                                   to={"/products/" + product._id}
@@ -361,6 +358,8 @@ export class NavBar extends Component {
           {/* <!-- End Nav Area --> */}
         </header>
       </Fragment>
+    ) : (
+      <LoadingPage />
     );
   }
 }
