@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function SingleBlogTitle(props) {
   return (
@@ -8,15 +9,15 @@ export function SingleBlogTitle(props) {
           <h2 className="ir-b">{props.data.title}</h2>
           <ul>
             <li>
-              <a className="ir-r" href="/">
+              <Link className="ir-r" to="/">
                 خانه
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className="ir-r" href="/blog">
-                وبلاگ
-              </a>
+              <Link className="ir-r" to="/weblogs">
+                مقالات آموزشی
+              </Link>
             </li>
 
             <li className="ir-r active">{props.data.title}</li>

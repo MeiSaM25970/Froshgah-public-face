@@ -9,11 +9,20 @@ import * as userService from "../service";
 export class AboutPage extends Component {
   state = { data: [], arrNum: 0 };
   componentDidMount() {
-    userService.fetchAboutUs().then((res) => {
-      const arrayNumber = res.data.length - 1;
-      this.setState({ data: res.data, arrNum: arrayNumber });
-    });
+    userService
+      .fetchAboutUs()
+      .then((res) => {
+        const arrayNumber = res.data.length - 1;
+        this.setState({ data: res.data, arrNum: arrayNumber });
+      })
+      .finally(() => this.scrollTop());
   }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return this.state.data[0] ? (
       <Fragment>

@@ -14,15 +14,25 @@ export class ProductsPage extends Component {
   }
 
   fetchData(id) {
-    userService.getProductById(id).then((res) => {
-      this.setState({ data: res.data });
-    });
+    userService
+      .getProductById(id)
+      .then((res) => {
+        this.setState({ data: res.data });
+      })
+      .catch(() => console.log({ msg: "خطای اتصال به سرور." }))
+      .finally(() => this.scrollTop());
   }
   componentWillReceiveProps(newProps) {
     if (this.props.match.params.id !== newProps.match.params.id) {
       this.fetchData(newProps.match.params.id);
     }
   }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return (
       <Fragment>

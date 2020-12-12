@@ -18,8 +18,15 @@ export class Weblogs extends Component {
       .then((res) => {
         this.setState({ data: res.data, loading: false });
       })
-      .catch(() => this.props.history.push("/error"));
+      .catch(() => this.props.history.push("/error"))
+      .finally(() => this.scrollTop());
   }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return this.state.loading ? (
       <LoadingPage />

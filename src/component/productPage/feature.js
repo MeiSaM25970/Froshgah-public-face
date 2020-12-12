@@ -3,7 +3,8 @@ import Loading from "../loading";
 export class FeaturesArea extends Component {
   state = {};
   render() {
-    return this.props.data ? (
+    const data = this.props.data;
+    return data ? (
       <section
         id="features"
         className="services-area product-features services-area-style-two pt-100 pb-70"
@@ -14,7 +15,7 @@ export class FeaturesArea extends Component {
           </div>
 
           <div className="row">
-            {this.props.data.feature.map((feature, index) => (
+            {data.feature.map((feature, index) => (
               <div className="col-lg-4 col-sm-6" key={index}>
                 <div className="single-services">
                   <h3 className="ir-b text-center">{feature.title}</h3>

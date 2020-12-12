@@ -4,6 +4,15 @@ import { FailPayment } from "../component/failPayment";
 
 export class FailPaymentPage extends Component {
   state = {};
+  componentDidMount() {
+    this.scrollTop();
+  }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return (
       <Fragment>

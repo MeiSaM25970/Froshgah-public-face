@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PleaseWait from "../loading/pleaseWait";
+import { Link } from "react-router-dom";
 export class ProductPageTitle extends Component {
   state = {};
   render() {
@@ -10,10 +10,10 @@ export class ProductPageTitle extends Component {
             <h2 className="ir-b">{this.props.data.title}</h2>
             <ul>
               <li>
-                <a className="ir-r" href="خانه">
+                <Link className="ir-r" to="/">
                   {" "}
                   خانه{" "}
-                </a>
+                </Link>
               </li>
 
               <li className="ir-r active">{this.props.data.title}</li>
@@ -22,7 +22,7 @@ export class ProductPageTitle extends Component {
         </div>
       </div>
     ) : (
-      <PleaseWait />
+      ""
     );
   }
 }

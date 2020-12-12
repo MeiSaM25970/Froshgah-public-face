@@ -12,12 +12,10 @@ export class TrackingReport extends Component {
       userService.searchTracking(trackingCode).then((res) => {
         this.setState({ data: res.data });
         this.orderStatus(res.data);
-        console.log(res.data.status);
       });
     } else {
       this.setState({ data: this.props.data });
       this.orderStatus(this.props.data);
-      console.log(this.props.data.status);
     }
   }
   orderStatus(data) {

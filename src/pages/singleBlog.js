@@ -16,13 +16,20 @@ export class SingleBlogPage extends Component {
     userService
       .weblogFindById(weblogId)
       .then((res) => this.setState({ data: res.data }))
-      .catch(() => this.props.history.push("/error"));
+      .catch(() => this.props.history.push("/error"))
+      .finally(() => this.scrollTop());
   }
   fetchCategories() {
     userService
       .fetchCategories()
       .then((res) => this.setState({ categories: res.data }));
   }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return this.state.data ? (
       <Fragment>

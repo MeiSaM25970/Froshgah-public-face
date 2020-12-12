@@ -11,6 +11,7 @@ export class CategoriesBlogs extends Component {
   state = { data: [], loading: true };
   async componentDidMount() {
     const id = this.props.match.params.id;
+
     await this.fetchData(id);
   }
 
@@ -20,7 +21,8 @@ export class CategoriesBlogs extends Component {
       .then((res) => {
         this.setState({ data: res.data, loading: false });
       })
-      .catch(() => this.props.history.push("/error"));
+      .catch(() => this.props.history.push("/error"))
+      .finally(() => this.scrollTop());
   }
 
   componentWillReceiveProps(newProps) {
@@ -29,6 +31,12 @@ export class CategoriesBlogs extends Component {
       this.fetchData(id);
     }
   }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return this.state.loading ? (
       <LoadingPage />

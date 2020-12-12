@@ -27,7 +27,6 @@ export class NavBar extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    console.log(this.props);
     const products = this.props.products;
     return products ? (
       <Fragment>

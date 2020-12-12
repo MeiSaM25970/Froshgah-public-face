@@ -26,8 +26,16 @@ export class HomePage extends Component {
       .catch((err) => {
         this.setState({ loading: false });
         console.log(err);
-      });
+      })
+      .finally(() => this.scrollTop());
   }
+
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     const products = this.props.products;
     return this.state.loading ? (
@@ -37,7 +45,7 @@ export class HomePage extends Component {
         <LoadPage />
         <Introduction />
         <Products data={products} />
-        <Pricing data={this.state.data} />
+        <Pricing data={products} />
         <BlogList data={this.state.weblog} {...this.props} />
         <ScrollTop />
       </Fragment>

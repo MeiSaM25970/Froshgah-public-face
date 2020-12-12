@@ -19,7 +19,6 @@ export class Comments extends Component {
     const comments = this.state.comments.filter(
       (comment) => comment.status === "accept"
     );
-    console.log(this.state);
     return comments.length > 0 ? (
       <div className="comments-wrap">
         <h3 className="ir-b">{`نظرات (${comments.length})`}</h3>

@@ -5,6 +5,15 @@ import { ScrollTop } from "../component/scrollTop";
 
 export class ContactPage extends Component {
   state = {};
+  componentDidMount() {
+    this.scrollTop();
+  }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return (
       <Fragment>

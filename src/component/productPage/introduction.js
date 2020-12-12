@@ -41,7 +41,7 @@ export class IntroductionProduct extends Component {
         </div>
       </section>
     ) : (
-      <Loading />
+      ""
     );
   }
 }
