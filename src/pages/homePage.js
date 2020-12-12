@@ -10,10 +10,11 @@ import * as userService from "../service";
 import LoadingPage from "./Loading";
 
 export class HomePage extends Component {
-  state = { data: [], loading: true };
+  state = { data: [], loading: true, about: [] };
   async componentDidMount() {
     await this.fetchWeblog();
     await this.counter();
+    await this.fetchAbout();
   }
 
   counter() {
@@ -22,14 +23,22 @@ export class HomePage extends Component {
   fetchWeblog() {
     userService
       .fetchWeblog()
-      .then((res) => this.setState({ weblog: res.data, loading: false }))
+      .then((res) => this.setState({ weblog: res.data }))
       .catch((err) => {
-        this.setState({ loading: false });
         console.log(err);
       })
-      .finally(() => this.scrollTop());
+      .finally(() => {
+        this.setState({ loading: false });
+        this.scrollTop();
+      });
   }
-
+  fetchAbout() {
+    userService
+      .fetchAboutUs()
+      .then((res) => this.setState({ about: res.data }))
+      .catch(() => console.log({ msg: "can not fetch about" }))
+      .finally(() => this.setState({ loading: false }));
+  }
   scrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -43,7 +52,7 @@ export class HomePage extends Component {
     ) : this.state.data ? (
       <Fragment>
         <LoadPage />
-        <Introduction />
+        <Introduction data={this.state.about} />
         <Products data={products} />
         <Pricing data={products} />
         <BlogList data={this.state.weblog} {...this.props} />

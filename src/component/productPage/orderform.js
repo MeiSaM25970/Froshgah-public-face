@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { InputCity, selectCityStore } from "../inputCity";
 import * as userService from "../../service";
 import validator from "validator";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 export class OrderForm extends Component {
   state = {
@@ -17,6 +19,7 @@ export class OrderForm extends Component {
     areaErr: false,
     cityErr: false,
     telTypeErr: false,
+    loading: false,
   };
   componentDidMount() {
     this.unsubscribe = selectCityStore.subscribe(() => {
@@ -36,6 +39,7 @@ export class OrderForm extends Component {
   }
   async submitHandler(e) {
     await e.preventDefault();
+    await this.setState({ loading: true });
     await this.validationInput();
     if (
       !this.state.addressErr &&
@@ -59,7 +63,11 @@ export class OrderForm extends Component {
       };
       userService
         .checkout(orderInfo)
-        .then((res) => window.location.replace(res.data));
+        .then((res) => window.location.replace(res.data))
+        .catch(async () => {
+          await this.configError();
+        })
+        .finally(() => this.setState({ loading: false }));
     }
   }
   async validationInput() {
@@ -71,26 +79,48 @@ export class OrderForm extends Component {
     const cityEmpty = await validator.isEmpty(this.state.area.city);
     const telType = await validator.isMobilePhone(this.state.tel, "fa-IR");
     if (fullNameEmpty) {
-      this.setState({ fullNameErr: true });
+      this.setState({ fullNameErr: true, loading: false });
     } else this.setState({ fullNameErr: false });
     if (telEmpty) {
-      this.setState({ telErr: true });
+      this.setState({ telErr: true, loading: false });
     } else this.setState({ telErr: false });
     if (telType) {
       this.setState({ telTypeErr: false, telErr: false });
-    } else this.setState({ telTypeErr: true });
+    } else this.setState({ telTypeErr: true, loading: false });
     if (addressEmpty) {
-      this.setState({ addressErr: true });
+      this.setState({ addressErr: true, loading: false });
     } else this.setState({ addressErr: false });
     if (postCodeEmpty) {
-      this.setState({ postCodeErr: true });
+      this.setState({ postCodeErr: true, loading: false });
     } else this.setState({ postCodeErr: false });
     if (areaEmpty) {
-      this.setState({ areaErr: true });
+      this.setState({ areaErr: true, loading: false });
     } else this.setState({ areaErr: false });
     if (cityEmpty) {
-      this.setState({ cityErr: true });
+      this.setState({ cityErr: true, loading: false });
     } else this.setState({ cityErr: false });
+  }
+  configError() {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="custom-ui text-right text-danger">
+            <i className="material-icons-outlined text-danger">error</i>
+
+            <p className="ir-r">خطا! لطفاً دوباره امتحان کنید.</p>
+
+            <button
+              className="btn btn-danger ir-r"
+              onClick={() => {
+                onClose();
+              }}
+            >
+              باشه
+            </button>
+          </div>
+        );
+      },
+    });
   }
   render() {
     return (
@@ -199,8 +229,14 @@ export class OrderForm extends Component {
                     <div className="col-12">
                       <div className="row">
                         <div className="col-12 d-flex justify-content-center align-items-center">
-                          <button className="default-btn ir-r" type="submit">
-                            ثبت سفارش
+                          <button
+                            className="default-btn ir-r"
+                            type="submit"
+                            disabled={this.state.loading}
+                          >
+                            {this.state.loading
+                              ? "لطفاً صبر کنید..."
+                              : " ثبت سفارش"}
                           </button>
                         </div>
                       </div>

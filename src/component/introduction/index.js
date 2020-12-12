@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { API_ADDRESS_SERVICE } from "../../env";
+import PleaseWait from "../loading/pleaseWait";
 
 export class Introduction extends Component {
   state = {};
+
   render() {
-    return (
+    const about = this.props.data[0];
+    return about ? (
       <section className="index-intro">
         <div className="container">
           <div className="row d-lg-flex align-items-lg-center">
             <div className="col-md-5 img-holder mb-5 mb-lg-0">
               <img
                 className="w-75 d-block mx-auto"
-                src="/assets/img/testimonials-img-2.jpg"
+                src={API_ADDRESS_SERVICE + about.imgPath}
                 alt="وبسایت رسمی رضا رفیعی"
               />
             </div>
@@ -42,6 +46,12 @@ export class Introduction extends Component {
           </div>
         </div>
       </section>
+    ) : (
+      <div style={{ marginTop: 150 }} className="container">
+        <div className="d-block mx-auto" style={{ width: 77 }}>
+          <PleaseWait />
+        </div>
+      </div>
     );
   }
 }

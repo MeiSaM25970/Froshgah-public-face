@@ -14,6 +14,7 @@ export class ContactForm extends Component {
     emailTypeErr: false,
     messageIsEmpty: false,
     isValid: false,
+    loading: false,
   };
 
   changeHandler(e) {
@@ -25,6 +26,7 @@ export class ContactForm extends Component {
   }
   async submitHandler(e) {
     await e.preventDefault();
+    await this.setState({ loading: true });
     await this.validation();
     if (this.state.isValid) {
       const contact = {
@@ -58,7 +60,8 @@ export class ContactForm extends Component {
             });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => this.setState({ loading: false }));
     }
   }
   validation() {
@@ -67,20 +70,20 @@ export class ContactForm extends Component {
     const emailType = validator.isEmail(this.state.email);
     const messageIsEmpty = validator.isEmpty(this.state.message);
     if (fullNameIsEmpty) {
-      this.setState({ fullNameIsEmpty: true });
+      this.setState({ fullNameIsEmpty: true, loading: false });
     } else this.setState({ fullNameIsEmpty: false });
     if (emailIsEmpty) {
-      this.setState({ emailIsEmpty: true });
+      this.setState({ emailIsEmpty: true, loading: false });
     } else this.setState({ emailIsEmpty: false });
     if (emailType) {
       this.setState({ emailTypeErr: false });
-    } else this.setState({ emailTypeErr: true });
+    } else this.setState({ emailTypeErr: true, loading: false });
     if (messageIsEmpty) {
-      this.setState({ messageIsEmpty: true });
+      this.setState({ messageIsEmpty: true, loading: false });
     } else this.setState({ messageIsEmpty: false });
     if (!fullNameIsEmpty && !emailIsEmpty && emailType && !messageIsEmpty) {
       this.setState({ isValid: true });
-    } else this.setState({ isValid: false });
+    } else this.setState({ isValid: false, loading: false });
   }
   render() {
     return (
@@ -159,8 +162,12 @@ export class ContactForm extends Component {
                 </div>
 
                 <div className="col-lg-12 col-md-12">
-                  <button type="submit" className="default-btn btn-two ir-r">
-                    ارسال
+                  <button
+                    type="submit"
+                    className="default-btn btn-two ir-r"
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loading ? "لطفاً صبر کنید..." : "ارسال"}
                   </button>
                   <div
                     id="msgSubmit"

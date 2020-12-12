@@ -3,6 +3,8 @@ import validator from "validator";
 import * as userService from "../../service";
 import PleaseWait from "../loading/pleaseWait";
 import { TrackingReport } from "./trackingReport";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 export class Tracking extends Component {
   state = { msg: "", search: "", searchErr: false, loading: false };
@@ -21,12 +23,11 @@ export class Tracking extends Component {
         })
         .catch(async (error) => {
           await this.setState({ loading: false });
-          if (error.response) {
-            if (error.response.status === 404) {
-              this.setState({ msg: "سفارشی با این کد رهگیری پیدا نشد." });
-            } else console.log(error);
+          if (error.response.status === 404) {
+            this.setState({ msg: "سفارشی با این کد رهگیری پیدا نشد." });
+          } else {
+            this.configError();
           }
-          console.log(error);
         });
     }
   }
@@ -42,6 +43,28 @@ export class Tracking extends Component {
     if (searchEmpty) {
       this.setState({ searchErr: true, loading: false });
     } else this.setState({ searchErr: false });
+  }
+  configError() {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="custom-ui text-right text-danger">
+            <i className="material-icons-outlined text-danger">error</i>
+
+            <p className="ir-r">خطا! لطفاً دوباره امتحان کنید.</p>
+
+            <button
+              className="btn btn-danger ir-r"
+              onClick={() => {
+                onClose();
+              }}
+            >
+              باشه
+            </button>
+          </div>
+        );
+      },
+    });
   }
   render() {
     return !this.props.location.search ? (
