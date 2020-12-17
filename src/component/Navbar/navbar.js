@@ -15,6 +15,9 @@ export class NavBar extends Component {
     closeDropStyle: "none",
     data: [],
     categories: [],
+    activePage: {
+      home: true,
+    },
   };
   async componentDidMount() {
     await this.fetchCategories();
@@ -72,8 +75,17 @@ export class NavBar extends Component {
                     <li className="nav-item">
                       <Link
                         to="/"
-                        className="nav-link ir-r active"
-                        onClick={() => this.setState({ isOpen: false })}
+                        className={
+                          this.state.activePage.home
+                            ? "nav-link ir-r active"
+                            : "nav-link ir-r"
+                        }
+                        onClick={() =>
+                          this.setState({
+                            isOpen: false,
+                            activePage: { home: true },
+                          })
+                        }
                       >
                         {" "}
                         خانه{" "}
@@ -83,10 +95,15 @@ export class NavBar extends Component {
                     <li className="nav-item">
                       <Link
                         to="#"
-                        className="nav-link ir-r"
+                        className={
+                          this.state.activePage.product
+                            ? "nav-link ir-r active"
+                            : "nav-link ir-r"
+                        }
                         onClick={() => {
                           this.setState({
                             openDropClick1: !this.state.openDropClick1,
+                            activePage: { product: true },
                           });
                         }}
                       >
@@ -104,11 +121,23 @@ export class NavBar extends Component {
                       >
                         {products ? (
                           products.map((product, index) => (
-                            <li className="nav-item" key={index}>
+                            <li
+                              className={
+                                this.state.activePage.product
+                                  ? "nav-link ir-r active"
+                                  : "nav-link ir-r"
+                              }
+                              key={index}
+                            >
                               <Link
                                 to={"/products/" + product._id}
-                                className="nav-link ir-r active"
-                                onClick={() => this.setState({ isOpen: false })}
+                                className="nav-link ir-r"
+                                onClick={() =>
+                                  this.setState({
+                                    isOpen: false,
+                                    activePage: { product: true },
+                                  })
+                                }
                               >
                                 {product.title}
                               </Link>
@@ -125,6 +154,7 @@ export class NavBar extends Component {
                         onClick={() => {
                           this.setState({
                             openDropClick1: !this.state.openDropClick1,
+                            activePage: { product: true },
                           });
                         }}
                       >
@@ -135,10 +165,15 @@ export class NavBar extends Component {
                     <li className="nav-item">
                       <Link
                         to="#"
-                        className="nav-link ir-r"
+                        className={
+                          this.state.activePage.weblog
+                            ? "nav-link ir-r active"
+                            : "nav-link ir-r"
+                        }
                         onClick={() => {
                           this.setState({
                             openDropClick2: !this.state.openDropClick2,
+                            activePage: { weblog: true },
                           });
                         }}
                       >
@@ -160,7 +195,12 @@ export class NavBar extends Component {
                               <Link
                                 to={`/weblogs/category/${item._id}`}
                                 className="nav-link ir-r "
-                                onClick={() => this.setState({ isOpen: false })}
+                                onClick={() =>
+                                  this.setState({
+                                    isOpen: false,
+                                    activePage: { weblog: true },
+                                  })
+                                }
                               >
                                 {item.title}
                               </Link>
@@ -177,6 +217,7 @@ export class NavBar extends Component {
                         onClick={() => {
                           this.setState({
                             openDropClick2: !this.state.openDropClick2,
+                            activePage: { weblog: true },
                           });
                         }}
                       >
@@ -186,8 +227,17 @@ export class NavBar extends Component {
                     <li className="nav-item">
                       <Link
                         to="/tracking"
-                        className="nav-link ir-r"
-                        onClick={() => this.setState({ isOpen: false })}
+                        className={
+                          this.state.activePage.tracking
+                            ? "nav-link ir-r active"
+                            : "nav-link ir-r"
+                        }
+                        onClick={() =>
+                          this.setState({
+                            isOpen: false,
+                            activePage: { tracking: true },
+                          })
+                        }
                       >
                         پیگیری سفارشات
                       </Link>
@@ -195,8 +245,17 @@ export class NavBar extends Component {
                     <li className="nav-item">
                       <Link
                         to="/about"
-                        className="nav-link ir-r"
-                        onClick={() => this.setState({ isOpen: false })}
+                        className={
+                          this.state.activePage.about
+                            ? "nav-link ir-r active"
+                            : "nav-link ir-r"
+                        }
+                        onClick={() =>
+                          this.setState({
+                            isOpen: false,
+                            activePage: { about: true },
+                          })
+                        }
                       >
                         درباره ما
                       </Link>
@@ -205,8 +264,17 @@ export class NavBar extends Component {
                     <li className="nav-item mean-last">
                       <Link
                         to="/contact"
-                        className="nav-link ir-r"
-                        onClick={() => this.setState({ isOpen: false })}
+                        className={
+                          this.state.activePage.contact
+                            ? "nav-link ir-r active"
+                            : "nav-link ir-r"
+                        }
+                        onClick={() =>
+                          this.setState({
+                            isOpen: false,
+                            activePage: { contact: true },
+                          })
+                        }
                       >
                         {" "}
                         تماس با ما{" "}
@@ -247,8 +315,17 @@ export class NavBar extends Component {
                       <li className="nav-item">
                         <Link
                           to="/"
-                          className="nav-link ir-r active"
-                          onClick={() => this.setState({ isOpen: false })}
+                          className={
+                            this.state.activePage.home
+                              ? "nav-link ir-r active"
+                              : "nav-link ir-r"
+                          }
+                          onClick={() =>
+                            this.setState({
+                              isOpen: false,
+                              activePage: { home: true },
+                            })
+                          }
                         >
                           {" "}
                           خانه{" "}
@@ -256,7 +333,14 @@ export class NavBar extends Component {
                       </li>
 
                       <li className="nav-item">
-                        <Link to="#" className="nav-link ir-r">
+                        <Link
+                          to="#"
+                          className={
+                            this.state.activePage.product
+                              ? "nav-link ir-r active"
+                              : "nav-link ir-r"
+                          }
+                        >
                           دوره های آموزشی
                           <i className="bx bx-chevron-down"></i>
                         </Link>
@@ -269,7 +353,10 @@ export class NavBar extends Component {
                                   to={"/products/" + product._id}
                                   className="nav-link ir-r"
                                   onClick={() =>
-                                    this.setState({ isOpen: false })
+                                    this.setState({
+                                      isOpen: false,
+                                      activePage: { product: true },
+                                    })
                                   }
                                 >
                                   {product.title}
@@ -283,7 +370,14 @@ export class NavBar extends Component {
                       </li>
 
                       <li className="nav-item">
-                        <Link to="#" className="nav-link ir-r">
+                        <Link
+                          to="#"
+                          className={
+                            this.state.activePage.weblog
+                              ? "nav-link ir-r active"
+                              : "nav-link ir-r"
+                          }
+                        >
                           مقالات آموزشی
                           <i className="bx bx-chevron-down"></i>
                         </Link>
@@ -296,7 +390,10 @@ export class NavBar extends Component {
                                   to={`/weblogs/category/${item._id}`}
                                   className="nav-link ir-r "
                                   onClick={() =>
-                                    this.setState({ isOpen: false })
+                                    this.setState({
+                                      isOpen: false,
+                                      activePage: { weblog: true },
+                                    })
                                   }
                                 >
                                   {item.title}
@@ -311,8 +408,17 @@ export class NavBar extends Component {
                       <li className="nav-item">
                         <Link
                           to="/tracking"
-                          className="nav-link ir-r"
-                          onClick={() => this.setState({ isOpen: false })}
+                          className={
+                            this.state.activePage.tracking
+                              ? "nav-link ir-r active"
+                              : "nav-link ir-r"
+                          }
+                          onClick={() =>
+                            this.setState({
+                              isOpen: false,
+                              activePage: { tracking: true },
+                            })
+                          }
                         >
                           {" "}
                           پیگیری سفارشات{" "}
@@ -321,8 +427,17 @@ export class NavBar extends Component {
                       <li className="nav-item">
                         <Link
                           to="/about"
-                          className="nav-link ir-r"
-                          onClick={() => this.setState({ isOpen: false })}
+                          className={
+                            this.state.activePage.about
+                              ? "nav-link ir-r active"
+                              : "nav-link ir-r"
+                          }
+                          onClick={() =>
+                            this.setState({
+                              isOpen: false,
+                              activePage: { about: true },
+                            })
+                          }
                         >
                           {" "}
                           درباره ما{" "}
@@ -332,8 +447,17 @@ export class NavBar extends Component {
                       <li className="nav-item">
                         <Link
                           to="/contact"
-                          className="nav-link ir-r"
-                          onClick={() => this.setState({ isOpen: false })}
+                          className={
+                            this.state.activePage.contact
+                              ? "nav-link ir-r active"
+                              : "nav-link ir-r"
+                          }
+                          onClick={() =>
+                            this.setState({
+                              isOpen: false,
+                              activePage: { contact: true },
+                            })
+                          }
                         >
                           {" "}
                           تماس با ما{" "}

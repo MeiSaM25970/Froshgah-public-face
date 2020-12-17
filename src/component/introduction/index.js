@@ -22,7 +22,7 @@ export class Introduction extends Component {
             <div className="col-md-1"></div>
             <div className="col-md-6">
               <h1 className="d-block text-right ir-b mb-3">
-                به وبسایت رسمی رضا رفیعی خوش آمدید
+                به وبسایت رسمی رضا فرجی خوش آمدید.
               </h1>
               <p className="d-block text-justify ir-r mb-3">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
