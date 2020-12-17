@@ -24,7 +24,6 @@ export class BlogList extends Component {
               this.props.data.map((item, index) => (
                 <div className="col-lg-4 col-md-6" key={index}>
                   <Link to={`/singleBlog/${item._id}`}>
-                    {" "}
                     <div className="single-blog-post">
                       <img src={API_ADDRESS_SERVICE + item.imgPath} alt="عکس" />
 

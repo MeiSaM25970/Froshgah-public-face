@@ -20,56 +20,13 @@ export class CategoriesForWeblog extends Component {
                 ))
               ) : (
                 <li>
-                  <a className="ir-r" href="#">
+                  <Link className="ir-r" to="#">
                     دسته ای وجود ندارد{" "}
-                  </a>
+                  </Link>
                 </li>
               )}
             </ul>
           </div>
-
-          {/* <div className="sidebar-widget tags">
-            <h3 className="ir-b">تگ ها</h3>
-
-            <ul>
-              <li>
-                <a className="ir-r" href="#">
-                  فرجی
-                </a>
-              </li>
-              <li>
-                <a className="ir-r" href="#">
-                  رضا
-                </a>
-              </li>
-              <li>
-                <a className="ir-r" href="#">
-                  Speaking
-                </a>
-              </li>
-              <li>
-                <a className="ir-r" href="#">
-                  افعال to be
-                </a>
-              </li>
-              <li>
-                <a className="ir-r" href="#">
-                  مکالمه
-                </a>
-              </li>
-              <li>
-                <a className="ir-r" href="#">
-                  یادگیری
-                </a>
-              </li>
-              <li>
-                <a className="ir-r" href="#">
-                  زبان
-                </a>
-              </li>
-            </ul>
-          </div>
-         */}
         </div>
       </div>
     );

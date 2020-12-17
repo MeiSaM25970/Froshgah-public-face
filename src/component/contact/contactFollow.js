@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 export class ContactTellAndFollow extends Component {
   state = {};
   render() {
@@ -32,9 +33,9 @@ export class ContactTellAndFollow extends Component {
               <a dir="ltr" href="mailto:hello@example.com">
                 hello@example.com
               </a>
-              <a dir="ltr" href="#">
+              <Link dir="ltr" to="#">
                 اسکایپ: @example
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -43,24 +44,24 @@ export class ContactTellAndFollow extends Component {
 
             <ul className="social-wrap">
               <li>
-                <a href="#" target="_blank">
+                <Link to="#">
                   <i className="bx bxl-twitter"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" target="_blank">
+                <Link to="#">
                   <i className="bx bxl-instagram"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" target="_blank">
+                <Link to="#">
                   <i className="bx bxl-facebook"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" target="_blank">
+                <Link to="#">
                   <i className="bx bxl-youtube"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

@@ -6,9 +6,11 @@ import { SharePost } from "./sharePost";
 import { Comments } from "./comments";
 import { CommentsForm } from "./commentsForm";
 import { CategoriesForWeblog } from "./categories";
+import validator from "validator";
+import { Link } from "react-router-dom";
 
 export class SingleBlog extends Component {
-  state = { data: { adminInfo: { imgPath: "1" } } };
+  state = { data: { adminInfo: { imgPath: "" } } };
   componentDidMount() {
     this.setState({ data: this.props.data });
   }
@@ -31,13 +33,15 @@ export class SingleBlog extends Component {
                   <div className="news-content">
                     <ul className="admin">
                       <li>
-                        <a className="ir-r" href="#">
+                        <Link className="ir-r" to="#">
                           <img
                             src={
-                              this.state.data.adminInfo
+                              !validator.isEmpty(
+                                this.state.data.adminInfo.imgPath
+                              )
                                 ? API_ADDRESS_SERVICE +
                                   this.state.data.adminInfo.imgPath
-                                : ""
+                                : "/assets/img/user.png"
                             }
                             width="50"
                             height="50"
@@ -47,7 +51,7 @@ export class SingleBlog extends Component {
                           {this.state.data.adminInfo
                             ? this.state.data.adminInfo.fullName
                             : ""}
-                        </a>
+                        </Link>
                       </li>
 
                       <li className="float ir-r">

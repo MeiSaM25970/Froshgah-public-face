@@ -7919,3 +7919,7 @@ product-view-one
   padding-right: 10px;
   margin-right: 20px;
 }
+
+.single-blog-content > img {
+  width: 100% !important;
+}

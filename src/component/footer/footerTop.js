@@ -11,13 +11,13 @@ export class FooterTop extends Component {
           <div className="row">
             <div className="col-lg-4 col-md-6">
               <div className="single-footer-widget">
-                <a href="index.html">
+                <Link to="/">
                   <img
                     className="logo-img"
                     src="/assets/img/logo.png"
                     alt="عکس"
                   />
-                </a>
+                </Link>
 
                 <p className="ir-r">
                   لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
@@ -27,24 +27,24 @@ export class FooterTop extends Component {
 
                 <ul className="social-icon">
                   <li>
-                    <a href="#">
+                    <Link to="#">
                       <i className="bx bxl-twitter"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="#">
                       <i className="bx bxl-facebook"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="#">
                       <i className="bx bxl-instagram"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="#">
                       <i className="bx bxl-linkedin-square"></i>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

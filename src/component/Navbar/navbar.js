@@ -49,8 +49,8 @@ export class NavBar extends Component {
           <div className="navbar-area">
             <div className="mobile-nav mean-container">
               <div className="mean-bar">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   className=" meanmenu-reveal"
                   style={{ right: "0", left: "auto" }}
                   onClick={() => this.setState({ isOpen: !this.state.isOpen })}
@@ -60,7 +60,7 @@ export class NavBar extends Component {
                       <span></span>
                     </span>
                   </span>
-                </a>
+                </Link>
                 <nav className="mean-nav ">
                   <ul
                     className={
@@ -81,8 +81,8 @@ export class NavBar extends Component {
                     </li>
 
                     <li className="nav-item">
-                      <a
-                        href="#"
+                      <Link
+                        to="#"
                         className="nav-link ir-r"
                         onClick={() => {
                           this.setState({
@@ -92,7 +92,7 @@ export class NavBar extends Component {
                       >
                         دوره های آموزشی
                         <i className="bx bx-chevron-down"></i>
-                      </a>
+                      </Link>
 
                       <ul
                         className="dropdown-menu"
@@ -118,9 +118,9 @@ export class NavBar extends Component {
                           <PleaseWait />
                         )}
                       </ul>
-                      <a
+                      <Link
                         className="mean-expand"
-                        href="#"
+                        to="#"
                         style={{ fontSize: "18px" }}
                         onClick={() => {
                           this.setState({
@@ -129,12 +129,12 @@ export class NavBar extends Component {
                         }}
                       >
                         {this.state.openDropClick1 ? "-" : "+"}
-                      </a>
+                      </Link>
                     </li>
 
                     <li className="nav-item">
-                      <a
-                        href="#"
+                      <Link
+                        to="#"
                         className="nav-link ir-r"
                         onClick={() => {
                           this.setState({
@@ -144,7 +144,7 @@ export class NavBar extends Component {
                       >
                         مقالات آموزشی
                         <i className="bx bx-chevron-down"></i>
-                      </a>
+                      </Link>
 
                       <ul
                         className="dropdown-menu"
@@ -170,9 +170,9 @@ export class NavBar extends Component {
                           <PleaseWait />
                         )}
                       </ul>
-                      <a
+                      <Link
                         className="mean-expand"
-                        href="#"
+                        to="#"
                         style={{ fontSize: "18px" }}
                         onClick={() => {
                           this.setState({
@@ -181,7 +181,7 @@ export class NavBar extends Component {
                         }}
                       >
                         {this.state.openDropClick2 ? "-" : "+"}
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
                       <Link
@@ -189,8 +189,7 @@ export class NavBar extends Component {
                         className="nav-link ir-r"
                         onClick={() => this.setState({ isOpen: false })}
                       >
-                        {" "}
-                        پیگیری سفارشات{" "}
+                        پیگیری سفارشات
                       </Link>
                     </li>
                     <li className="nav-item">
@@ -199,8 +198,7 @@ export class NavBar extends Component {
                         className="nav-link ir-r"
                         onClick={() => this.setState({ isOpen: false })}
                       >
-                        {" "}
-                        درباره ما{" "}
+                        درباره ما
                       </Link>
                     </li>
 
@@ -244,14 +242,7 @@ export class NavBar extends Component {
                   </Link>
 
                   <div className="mean-push"></div>
-                  <div
-                    className="collapse navbar-collapse mean-menu"
-                    // style={
-                    //   this.state.isOpen
-                    //     ? { display: this.state.openStyle }
-                    //     : { display: this.state.closeStyle }
-                    // }
-                  >
+                  <div className="collapse navbar-collapse mean-menu">
                     <ul className="navbar-nav m-auto">
                       <li className="nav-item">
                         <Link
@@ -265,10 +256,10 @@ export class NavBar extends Component {
                       </li>
 
                       <li className="nav-item">
-                        <a href="#" className="nav-link ir-r">
+                        <Link to="#" className="nav-link ir-r">
                           دوره های آموزشی
                           <i className="bx bx-chevron-down"></i>
-                        </a>
+                        </Link>
 
                         <ul className="dropdown-menu">
                           {products ? (
@@ -292,10 +283,10 @@ export class NavBar extends Component {
                       </li>
 
                       <li className="nav-item">
-                        <a href="#" className="nav-link ir-r">
+                        <Link to="#" className="nav-link ir-r">
                           مقالات آموزشی
                           <i className="bx bx-chevron-down"></i>
-                        </a>
+                        </Link>
 
                         <ul className="dropdown-menu">
                           {this.state.categories.length > 0 ? (

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -15,7 +16,7 @@ export class SharePost extends Component {
           <span className="ir-r">به اشتراک گذاری این پست:</span>
         </li>
         <li>
-          <a href="#">
+          <Link to="#">
             <TwitterShareButton
               url={
                 PUBLIC_FACE_SERVICE + "singleBlog/" + this.props.match.params.id
@@ -23,10 +24,10 @@ export class SharePost extends Component {
             >
               <i className="bx bxl-twitter"></i>
             </TwitterShareButton>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="#">
             <TelegramShareButton
               url={
                 PUBLIC_FACE_SERVICE + "singleBlog/" + this.props.match.params.id
@@ -34,10 +35,10 @@ export class SharePost extends Component {
             >
               <i className="bx bxl-telegram"></i>
             </TelegramShareButton>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="#">
             <FacebookShareButton
               url={
                 PUBLIC_FACE_SERVICE + "singleBlog/" + this.props.match.params.id
@@ -45,10 +46,10 @@ export class SharePost extends Component {
             >
               <i className="bx bxl-facebook"></i>
             </FacebookShareButton>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" target="_blank">
+          <Link to="#" target="_blank">
             <WhatsappShareButton
               url={
                 PUBLIC_FACE_SERVICE + "singleBlog/" + this.props.match.params.id
@@ -56,7 +57,7 @@ export class SharePost extends Component {
             >
               <i className="bx bxl-whatsapp"></i>
             </WhatsappShareButton>
-          </a>
+          </Link>
         </li>
       </ul>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { API_ADDRESS_SERVICE } from "../../env";
-import Loading from "../loading";
 import numeral from "numeral";
 
 export class IntroductionProduct extends Component {

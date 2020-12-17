@@ -100,3 +100,17 @@ body {
 .c-success {
   color: #20b351 !important;
 }
+
+@media only screen and (max-width: 767px) {
+  .services-area-style-two {
+    background: url(/assets/img/services-bg.jpg) no-repeat top center, #eee;
+    background-size: 250%;
+    /* background-color: #eee; */
+  }
+  .services-area-style-two .services-bg {
+    display: block;
+  }
+  .services-area-style-two .services-bg::before {
+    height: 250% !important;
+  }
+}
