@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { BlogList } from "../component/blog";
 import { Introduction } from "../component/introduction";
-import Loading from "../component/loading";
 import { LoadPage } from "../component/loadPage";
 import { Pricing } from "../component/pricing";
 import { Products } from "../component/products";
@@ -49,7 +48,7 @@ export class HomePage extends Component {
     const products = this.props.products;
     return this.state.loading ? (
       <LoadingPage />
-    ) : this.state.data ? (
+    ) : (
       <Fragment>
         <LoadPage />
         <Introduction data={this.state.about} />
@@ -58,8 +57,6 @@ export class HomePage extends Component {
         <BlogList data={this.state.weblog} {...this.props} />
         <ScrollTop />
       </Fragment>
-    ) : (
-      <Loading />
     );
   }
 }

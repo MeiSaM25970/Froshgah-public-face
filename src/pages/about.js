@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { AboutComponent } from "../component/about/aboutSection";
 import { IntroductionAbout } from "../component/about/introduction";
 import { AboutTitle } from "../component/about/title";
-import PleaseWait from "../component/loading/pleaseWait";
+import Loading from "../component/loading";
 import { ScrollTop } from "../component/scrollTop";
 import * as userService from "../service";
 
@@ -32,7 +32,7 @@ export class AboutPage extends Component {
         <ScrollTop />
       </Fragment>
     ) : (
-      <PleaseWait />
+      <Loading />
     );
   }
 }

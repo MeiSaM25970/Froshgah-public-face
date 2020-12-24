@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PleaseWait from "../loading/pleaseWait";
 import * as userService from "../../service";
+import { Link } from "react-router-dom";
 
 export class CategoriesPageTitle extends Component {
   state = { category: { title: "" } };
@@ -28,12 +29,17 @@ export class CategoriesPageTitle extends Component {
             <h2 className="ir-b">مقالات دسته بندی شده</h2>
             <ul>
               <li>
-                <a className="ir-r" href="خانه">
+                <Link className="ir-r" to="/">
                   {" "}
                   خانه{" "}
-                </a>
+                </Link>
               </li>
-
+              <li>
+                <Link className="ir-r" to="/weblogs">
+                  {" "}
+                  مقالات آموزشی{" "}
+                </Link>
+              </li>
               <li className="ir-r active">{`مقالات دسته  ${this.state.category.title} `}</li>
             </ul>
           </div>

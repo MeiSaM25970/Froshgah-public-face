@@ -38,6 +38,7 @@ export class ContactForm extends Component {
         .createContact(contact)
         .then((res) => {
           if (res.status === 200) {
+            e.target.reset();
             confirmAlert({
               customUI: ({ onClose }) => {
                 return (

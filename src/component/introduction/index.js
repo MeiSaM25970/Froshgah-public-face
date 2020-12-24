@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { API_ADDRESS_SERVICE } from "../../env";
-import PleaseWait from "../loading/pleaseWait";
+import Loading from "../loading";
 
 export class Introduction extends Component {
   state = {};
@@ -49,7 +49,7 @@ export class Introduction extends Component {
     ) : (
       <div style={{ marginTop: 150 }} className="container">
         <div className="d-block mx-auto" style={{ width: 77 }}>
-          <PleaseWait />
+          <Loading />
         </div>
       </div>
     );

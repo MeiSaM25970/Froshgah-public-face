@@ -29,6 +29,7 @@ export class CommentsForm extends Component {
       }
     }
   }
+
   async submitHandler(e) {
     await e.preventDefault();
     this.setState({ loading: true });
@@ -44,6 +45,7 @@ export class CommentsForm extends Component {
         .createComment(comment)
         .then((res) => {
           if (res.status === 200) {
+            e.target.reset();
             confirmAlert({
               customUI: ({ onClose }) => {
                 return (
@@ -58,8 +60,8 @@ export class CommentsForm extends Component {
 
                     <button
                       className="default-btn btn-two ir-r"
-                      onClick={() => {
-                        onClose();
+                      onClick={async () => {
+                        await onClose();
                       }}
                     >
                       باشه

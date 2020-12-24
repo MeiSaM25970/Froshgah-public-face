@@ -54,9 +54,7 @@ export class Comments extends Component {
         </ul>
       </div>
     ) : (
-      <div className="comments-wrap">
-        <h3 className="ir-b">نظرات (0)</h3>
-      </div>
+      ""
     );
   }
 }

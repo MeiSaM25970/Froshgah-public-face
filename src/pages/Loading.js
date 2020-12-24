@@ -6,7 +6,10 @@ class LoadingPage extends Component {
   render() {
     return (
       <div>
-        <div className="ir-r mx-auto d-block" style={{ marginTop: 200 }}>
+        <div
+          className="ir-r mx-auto d-block"
+          style={{ marginTop: 200, marginBottom: 50 }}
+        >
           <h3 className="d-block ir-r mx-auto text-center w-50">
             {" لطفا صبر کنید..."}
           </h3>

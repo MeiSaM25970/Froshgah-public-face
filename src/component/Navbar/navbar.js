@@ -403,6 +403,20 @@ export class NavBar extends Component {
                           ) : (
                             <PleaseWait />
                           )}
+                          <li className="nav-item">
+                            <Link
+                              to={`/weblogs`}
+                              className="nav-link ir-r "
+                              onClick={() =>
+                                this.setState({
+                                  isOpen: false,
+                                  activePage: { weblog: true },
+                                })
+                              }
+                            >
+                              همه مقالات
+                            </Link>
+                          </li>
                         </ul>
                       </li>
                       <li className="nav-item">
