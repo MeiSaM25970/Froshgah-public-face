@@ -76,7 +76,7 @@ export class FooterTop extends Component {
                   {!validator.isEmpty(data[0].whatsApp) && (
                     <li>
                       <a
-                        href={data[0].whatsApp}
+                        href={"whatsapp://send/?phone=" + data[0].whatsApp}
                         target="_blank"
                         rel="noreferrer"
                       >

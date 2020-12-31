@@ -72,7 +72,11 @@ export class ContactTellAndFollow extends Component {
               )}
               {!validator.isEmpty(data[0].whatsApp) && (
                 <li>
-                  <a href={data[0].whatsApp} target="_blank" rel="noreferrer">
+                  <a
+                    href={"whatsapp://send/?phone=" + data[0].whatsApp}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <i className="bx bxl-whatsapp-square"></i>
                   </a>
                 </li>
