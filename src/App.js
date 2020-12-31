@@ -23,6 +23,8 @@ class App extends Component {
   state = {};
   componentDidMount() {
     this.fetchProduct();
+    this.fetchMainDetail();
+    this.fetchFooterDetail();
   }
   navFoot = () => {
     if (window.location.pathname === "/error") {
@@ -41,19 +43,43 @@ class App extends Component {
       .then(async (res) => await this.setState({ data: res.data }))
       .catch((err) => console.log(err));
   }
+  fetchMainDetail() {
+    userService
+      .fetchMainDetail()
+      .then((res) => this.setState({ mainDetail: res.data }))
+      .catch((err) => console.log(err));
+  }
+  fetchFooterDetail() {
+    userService
+      .fetchFooterDetail()
+      .then((res) => this.setState({ footerDetail: res.data }))
+      .catch((err) => console.log(err));
+  }
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <LoadPage />
-          {this.showNavFoot ? <NavBar products={this.state.data} /> : ""}
+          {this.showNavFoot ? (
+            <NavBar
+              products={this.state.data}
+              mainDetail={this.state.mainDetail}
+              footerDetail={this.state.footerDetail}
+            />
+          ) : (
+            ""
+          )}
           <Switch>
             <Route
               path="/"
               exact
               render={(props) => (
                 <Page title="صفحه اصلی">
-                  <HomePage products={this.state.data} {...props} />
+                  <HomePage
+                    products={this.state.data}
+                    mainDetail={this.state.mainDetail}
+                    {...props}
+                  />
                 </Page>
               )}
             />
@@ -107,7 +133,10 @@ class App extends Component {
               exact
               render={(props) => (
                 <Page title="تماس  با ما">
-                  <ContactPage {...props} />
+                  <ContactPage
+                    {...props}
+                    footerDetail={this.state.footerDetail}
+                  />
                 </Page>
               )}
             />
@@ -158,7 +187,14 @@ class App extends Component {
             />
             <Redirect to="/" />
           </Switch>
-          {this.showNavFoot ? <FooterTop products={this.state.data} /> : ""}
+          {this.showNavFoot ? (
+            <FooterTop
+              products={this.state.data}
+              footerDetail={this.state.footerDetail}
+            />
+          ) : (
+            ""
+          )}
           {this.showNavFoot ? <FooterBottom /> : ""}
         </BrowserRouter>
       </div>

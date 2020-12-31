@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import validator from "validator";
+import { API_ADDRESS_SERVICE } from "../../env";
+import Loading from "../loading";
 export class FooterTop extends Component {
   state = {};
 
   render() {
     let products = this.props.products;
-    return (
+    let data = this.props.footerDetail;
+    return data ? (
       <footer className="footer-top-area pt-100 pb-70">
         <div className="container">
           <div className="row">
@@ -14,38 +18,83 @@ export class FooterTop extends Component {
                 <Link to="/">
                   <img
                     className="logo-img"
-                    src="/assets/img/logo.png"
+                    src={
+                      API_ADDRESS_SERVICE + data[0].imgPath ||
+                      "/assets/img/logo.png"
+                    }
                     alt="عکس"
                   />
                 </Link>
 
-                <p className="ir-r">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است
-                </p>
+                <p className="ir-r">{data[0].description}</p>
 
                 <ul className="social-icon">
-                  <li>
-                    <Link to="#">
-                      <i className="bx bxl-twitter"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="bx bxl-facebook"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="bx bxl-instagram"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="bx bxl-linkedin-square"></i>
-                    </Link>
-                  </li>
+                  {!validator.isEmpty(data[0].twitter) && (
+                    <li>
+                      <a
+                        href={data[0].twitter}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="bx bxl-twitter"></i>
+                      </a>
+                    </li>
+                  )}
+                  {!validator.isEmpty(data[0].facebook) && (
+                    <li>
+                      <a
+                        href={data[0].facebook}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="bx bxl-facebook"></i>
+                      </a>
+                    </li>
+                  )}
+                  {!validator.isEmpty(data[0].instagram) && (
+                    <li>
+                      <a
+                        href={data[0].instagram}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="bx bxl-instagram"></i>
+                      </a>
+                    </li>
+                  )}
+                  {!validator.isEmpty(data[0].linkedIn) && (
+                    <li>
+                      <a
+                        href={data[0].linkedIn}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="bx bxl-linkedin-square"></i>
+                      </a>
+                    </li>
+                  )}
+                  {!validator.isEmpty(data[0].whatsApp) && (
+                    <li>
+                      <a
+                        href={data[0].whatsApp}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="bx bxl-whatsapp-square"></i>
+                      </a>
+                    </li>
+                  )}
+                  {!validator.isEmpty(data[0].telegram) && (
+                    <li>
+                      <a
+                        href={data[0].telegram}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="bx bxl-telegram"></i>
+                      </a>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -79,7 +128,7 @@ export class FooterTop extends Component {
                     </Link>
                   </li>
                   <li>
-                    <Link className="ir-r" to="contact">
+                    <Link className="ir-r" to="/contact">
                       تماس با ما
                     </Link>
                   </li>
@@ -94,23 +143,29 @@ export class FooterTop extends Component {
                 <ul className="address">
                   <li className="location ir-r">
                     <i className="bx bxs-location-plus"></i>
-                    تهران، میدان آزادی، نمایشگاه بین المللی شهر آفتاب.
+                    {data[0].address}
                   </li>
                   <li>
                     <i className="bx bxs-envelope"></i>
                     <a
                       className="ir-r"
-                      href="mailto:hello@example.com"
+                      href={`mailto:` + data[0].email}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      hello@example.com
+                      {data[0].email}{" "}
                     </a>
                   </li>
                   <li>
                     <i className="bx bxs-phone-call"></i>
-                    <a className="ir-r" href="tel:09121111111">
-                      0912-111-1111
+                    <a className="ir-r" href={"tel:" + data[0].mobile1}>
+                      {data[0].mobile1}
+                    </a>
+                    <a className="ir-r" href={"tel:" + data[0].mobile2}>
+                      {data[0].mobile2}
+                    </a>
+                    <a className="ir-r" href={"tel:" + data[0].tel}>
+                      {data[0].tel}
                     </a>
                   </li>
                 </ul>
@@ -119,6 +174,8 @@ export class FooterTop extends Component {
           </div>
         </div>
       </footer>
+    ) : (
+      <Loading />
     );
   }
 }

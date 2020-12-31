@@ -2,34 +2,49 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { API_ADDRESS_SERVICE } from "../../env";
 import Loading from "../loading";
-
+import * as userService from "../../service";
 export class Introduction extends Component {
   state = {};
-
+  componentDidMount() {
+    if (this.props.data) {
+      this.setState({ mainDetail: this.props.data[0] });
+    }
+    this.fetchVideos();
+  }
+  componentWillReceiveProps(newProps) {
+    if (newProps.data) {
+      this.setState({ mainDetail: newProps.data[0] });
+    }
+  }
+  fetchVideos() {
+    userService
+      .fetchVideos()
+      .then((res) => this.setState({ videos: res.data }))
+      .catch((err) => console.log(err));
+  }
   render() {
-    const about = this.props.data[0];
-    return about ? (
+    return this.state.mainDetail ? (
       <section className="index-intro">
         <div className="container">
           <div className="row d-lg-flex align-items-lg-center">
             <div className="col-md-5 img-holder mb-5 mb-lg-0">
               <img
                 className="w-75 d-block mx-auto"
-                src={API_ADDRESS_SERVICE + about.imgPath}
+                src={API_ADDRESS_SERVICE + this.state.mainDetail.imgPath}
                 alt="وبسایت رسمی رضا رفیعی"
               />
             </div>
             <div className="col-md-1"></div>
             <div className="col-md-6">
               <h1 className="d-block text-right ir-b mb-3">
-                به وبسایت رسمی رضا فرجی خوش آمدید.
+                {this.state.mainDetail.title}
               </h1>
-              <p className="d-block text-justify ir-r mb-3">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
-                در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                نیاز
-              </p>
+              <div
+                className="ir-r text-justify"
+                dangerouslySetInnerHTML={{
+                  __html: this.state.mainDetail.description,
+                }}
+              />
               <a
                 className="default-btn ir-r mb-3 mb-md-0 d-block d-md-inline-block"
                 href="#products"
@@ -42,6 +57,19 @@ export class Introduction extends Component {
               >
                 مشاهده مقالات آموزشی
               </Link>
+            </div>
+            <div className="row">
+              {this.state.videos &&
+                this.state.videos.map((video, index) => (
+                  <div className="col-md-10 mx-auto mt-5">
+                    <video
+                      key={index}
+                      src={API_ADDRESS_SERVICE + video.videoPath}
+                      controls={true}
+                      width="100%"
+                    />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

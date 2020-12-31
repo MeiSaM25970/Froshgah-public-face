@@ -10,7 +10,7 @@ export class ContactArea extends Component {
         <div className="container">
           <div className="row">
             <ContactForm />
-            <ContactTellAndFollow />
+            <ContactTellAndFollow data={this.props.data} />
           </div>
         </div>
       </section>

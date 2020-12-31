@@ -52,3 +52,12 @@ export function filterCommentsByWeblogId(id) {
 export function counter() {
   return axios.post(API_ADDRESS_SERVICE + "counter", null);
 }
+export function fetchMainDetail() {
+  return axios.get(API_ADDRESS_SERVICE + "managePages/main");
+}
+export function fetchFooterDetail() {
+  return axios.get(API_ADDRESS_SERVICE + "managePages/footer");
+}
+export function fetchVideos() {
+  return axios.get(API_ADDRESS_SERVICE + "managePages/video");
+}

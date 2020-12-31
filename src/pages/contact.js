@@ -15,10 +15,11 @@ export class ContactPage extends Component {
     });
   };
   render() {
+    const footerDetail = this.props.footerDetail;
     return (
       <Fragment>
         <ContactPageTitle />
-        <ContactArea />
+        <ContactArea data={footerDetail} />
         <ScrollTop />
       </Fragment>
     );

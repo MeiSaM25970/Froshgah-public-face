@@ -46,12 +46,13 @@ export class HomePage extends Component {
   };
   render() {
     const products = this.props.products;
+    const mainDetail = this.props.mainDetail;
     return this.state.loading ? (
       <LoadingPage />
     ) : (
       <Fragment>
         <LoadPage />
-        <Introduction data={this.state.about} />
+        <Introduction data={mainDetail} />
         <Products data={products} />
         <Pricing data={products} />
         <BlogList data={this.state.weblog} {...this.props} />
