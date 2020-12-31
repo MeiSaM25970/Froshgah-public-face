@@ -40,23 +40,25 @@ export class Introduction extends Component {
                 {this.state.mainDetail.title}
               </h1>
               <div
-                className="ir-r text-justify"
+                className="ir-r text-justify pl-3 pr-3"
                 dangerouslySetInnerHTML={{
                   __html: this.state.mainDetail.description,
                 }}
               />
-              <a
-                className="default-btn ir-r mb-3 mb-md-0 d-block d-md-inline-block"
-                href="#products"
-              >
-                مشاهده دوره ها
-              </a>
-              <Link
-                to="/weblogs"
-                className="default-btn ir-r mb-0 mr-0 mr-md-1 mr-lg-3 d-block d-md-inline-block"
-              >
-                مشاهده مقالات آموزشی
-              </Link>
+              <div className="mt-5">
+                <a
+                  className="default-btn ir-r mb-3 mb-md-0 d-block d-md-inline-block"
+                  href="#products"
+                >
+                  مشاهده دوره ها
+                </a>
+                <Link
+                  to="/weblogs"
+                  className="default-btn ir-r mb-0 mr-0 mr-md-1 mr-lg-3 d-block d-md-inline-block"
+                >
+                  مشاهده مقالات آموزشی
+                </Link>
+              </div>
             </div>
             <div className="row">
               {this.state.videos &&
